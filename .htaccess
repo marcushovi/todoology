@@ -1,0 +1,29 @@
+ErrorDocument 404 http://localhost/todo/404.php
+ErrorDocument 403 http://localhost/todo/403.php
+ErrorDocument 500 http://localhost/todo/500.php
+
+
+RewriteEngine On
+
+# users don't get access to folders without index file
+#Options -Indexes
+
+# Installation directory
+#RewriteBase /www/polovnictvorybarstvo/
+
+# Protect appication and system files from being viewed
+RewriteRule ^(_utilities) - [F,L]
+RewriteRule ^(_partials) - [F,L]
+RewriteRule ^(app/_partials) - [F,L]
+
+# Allow any files or directories that exist to be displayed directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite all other URLs to index.php/
+RewriteRule .* index.php/$0 [PT,L]
+
+
+## Allow acces to files without suffix .php
+#RewriteCond %{REQUEST_FILENAME}.php -f
+#RewriteRule !.*\.php$ %{REQUEST_FILENAME}.php [QSA,L]
