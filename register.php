@@ -78,7 +78,7 @@ if ( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "
 
             // alert status
             if ( $result ) {
-                $alert->success( "You was successfully registered." );
+                $alert->success( "you have been successfully registered " );
                 $email = "";
                 $name = "";
                 $password = "";

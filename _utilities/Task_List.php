@@ -39,7 +39,7 @@ class Task_List extends Task
                 $result = $this->execute( $query );
 
                 if ( $result ) {
-                    return $this->response( 1, 201, "List '$title' was successfully created!" );
+                    return $this->response( 1, 201, " The list '$title' was created successfully!" );
 
                 } else {
                     return $this->response( 0, 500, "Sorry, there was a problem connecting to the server." );
@@ -99,7 +99,7 @@ class Task_List extends Task
 
         if ( $result_list === TRUE && $result_task === TRUE ) {
 
-            return $this->response( 1, 201, "List was successfully deleted" );
+            return $this->response( 1, 201, "The list was deleted successfully " );
         } else {
             return $this->response( 0, 500, "Something went wrong" );
         }
