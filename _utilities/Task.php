@@ -87,7 +87,7 @@ class Task extends Crud
                 $result = $this->execute( $query );
 
                 if ( $result ) {
-                    return $this->response( 1, 201, "Task '$title' was successfully created!" );
+                    return $this->response( 1, 201, "Task '$title' was created successfully!" );
 
                 } else {
                     return $this->response( 0, 500, "Sorry, there was a problem connecting to the server." );
@@ -113,7 +113,7 @@ class Task extends Crud
         $result = $this->execute( $query );
 
         if ( $result === TRUE ) {
-            return $this->response( 1, 201, "Task was successfully deleted" );
+            return $this->response( 1, 201, "The task was deleted successfully" );
         } else {
             return $this->response( 0, 500, "Something went wrong" );
         }
@@ -181,8 +181,7 @@ class Task extends Crud
                 $result = $this->execute( $query );
 
                 if ( $result ) {
-                    return $this->response( 1, 201, "Task '$title' was successfully edited!" );
-
+                    return $this->response( 1, 201, "The task '$title' was edited successfully!" );
                 } else {
                     return $this->response( 0, 500, "Sorry, there was a problem connecting to the server." );
                 }
@@ -216,9 +215,9 @@ class Task extends Crud
 
         if ( $result ) {
             if ( $is_complete == 1 )
-                return $this->response( 1, 201, "Task was successfully completed! Congratulation" );
+                return $this->response( 1, 201, "Task completed successfully! Congratulation" );
             else
-                return $this->response( 1, 201, "Task was successfully uncompleted!" );
+                return $this->response( 1, 201, "Task uncompleted successfully!" );
 
 
         } else {
