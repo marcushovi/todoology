@@ -30,6 +30,26 @@ class Task extends Crud
             return false;
     }
 
+    public function get_tasks_number( $id_user, $id_list )
+    {
+        if ( !isset( $id_user ) || empty( $id_user ) || !isset( $id_list ) || empty( $id_list ) ) {
+            return $this->response( 0, 422, "Something went wrong!" );
+        }
+
+        $id_user = $this->escape_string( $id_user );
+        $id_list = $this->escape_string( $id_list );
+        // get all complete tasks sorted by time when were uploaded ,also check user ID
+
+        $query = "SELECT COUNT(ID) AS number_of_tasks FROM tasks WHERE id_user = '$id_user' AND id_list = '$id_list';";
+
+        $result = $this->get_data( $query );
+
+        if ( $result && count( $result ) > 0 )
+            return $result;
+        else
+            return false;
+    }
+
     function response( $success, $status, $message, $extra = [] )
     {
         $alert = new Alert();
