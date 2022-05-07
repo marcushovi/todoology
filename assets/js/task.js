@@ -27,35 +27,36 @@ $( document ).ready( function () {
     // } );
 
     function reloadJS() {
-        $( "script" ).each( function () {
-
-            if ( $( this ).attr( "src" ) !== undefined && ($( this ).attr( "src" ).includes( "app.js" ) || $( this ).attr( "src" ).includes( "list.js" ) || $( this ).attr( "src" ).includes( "task.js" ) || $( this ).attr( "src" ).includes( "flowbite.js" )) )
-                $( this ).remove();
-        } );
-
-
-        const s = document.createElement( 'script' );
-        s.src = '../assets/js/app.js';
-        document.body.appendChild( s );
-        const s2 = document.createElement( 'script' );
-        s2.src = '../assets/js/list.js';
-        document.body.appendChild( s2 );
-        const s3 = document.createElement( 'script' );
-        s3.src = '../assets/js/task.js';
-        document.body.appendChild( s3 );
-        const s4 = document.createElement( 'script' );
-        s4.src = '../assets/js/flowbite.js';
-        document.body.appendChild( s4 );
+        // $( "script" ).each( function () {
+        //
+        //     if ( $( this ).attr( "src" ) !== undefined && ($( this ).attr( "src" ).includes( "app.js" ) || $( this ).attr( "src" ).includes( "list.js" ) || $( this ).attr( "src" ).includes( "task.js" ) || $( this ).attr( "src" ).includes( "flowbite.js" )) )
+        //         $( this ).remove();
+        // } );
+        //
+        //
+        // const s = document.createElement( 'script' );
+        // s.src = '../assets/js/app.js';
+        // document.body.appendChild( s );
+        // const s2 = document.createElement( 'script' );
+        // s2.src = '../assets/js/list.js';
+        // document.body.appendChild( s2 );
+        // const s3 = document.createElement( 'script' );
+        // s3.src = '../assets/js/task.js';
+        // document.body.appendChild( s3 );
+        // const s4 = document.createElement( 'script' );
+        // s4.src = '../assets/js/flowbite.js';
+        // document.body.appendChild( s4 );
     }
 
-    function reloadLists() {
+    function loadList() {
 
 
         const id_user = $( "input[name='id_user']" ).val();
-
+        const id_list = $( "input[name='id_showed_list']" ).val();
 
         let form_data = {
             "id_user": id_user,
+            "id_list": id_list,
         };
 
         form_data = JSON.stringify( form_data );
@@ -69,7 +70,6 @@ $( document ).ready( function () {
             processData: false,
             success: function ( response ) {
                 response = JSON.parse( response );
-
                 $( "#list-container" ).html( $.parseHTML( response.data ) );
                 // $("#list-container").append(response.data);
 
@@ -112,14 +112,14 @@ $( document ).ready( function () {
         reloadJS();
         if ( response.success === 1 ) {
             setTimeout( function () {
-                reloadLists();
+                loadList();
             }, 500 );
         }
     }
 
 
     // if you click "Add List"  button
-    $( "#add_task" ).off().click( function () {
+    $("#add_task").off().click( function () {
 
         prepareForm( "New Task", "Create", "", "" );
 
@@ -160,7 +160,7 @@ $( document ).ready( function () {
                 success: handleResponse
             } );
         } );
-    } );
+    });
 
     $( "#close_add_task" ).off().click( function () {
         $( "#add_task_overlay" ).fadeOut( 400 );
@@ -308,4 +308,3 @@ $( document ).ready( function () {
 
 } )
 ;
-

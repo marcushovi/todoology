@@ -20,6 +20,7 @@ if  (isset($list["ID"])) {
 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <input type="hidden" name="id_showed_list" value="' . $list[ "ID" ] . '">
             <div class="relative p-4 pl-8  ' . $list[ "color" ] . ' ">
             <h2 class="text-2xl font-bold text-gray-200">
                 <span id="list-title" >' . $list[ "title" ] . '</span>
