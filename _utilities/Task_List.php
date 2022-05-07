@@ -58,24 +58,60 @@ class Task_List extends Task
 
         $id_user = $this->escape_string( $data->id_user );
 // get all complete tasks sorted by time when were uploaded ,also check user ID
-        $query = "SELECT ID, title, color FROM lists WHERE id_user = '$id_user' ORDER BY created_at DESC ;";
+        $query = "SELECT ID, title, color FROM lists WHERE id_user = '$id_user' OR id_user = '-1' ORDER BY created_at DESC ;";
 
         $result_lists = $this->get_data( $query );
-
 
         if ( $result_lists && count( $result_lists ) > 0 ) {
 
             foreach ( $result_lists as &$list ) {
-                $result_tasks = $this->get_tasks( $id_user, $list[ "ID" ] );
+                $result_tasks = $this->get_tasks_number( $id_user, $list[ "ID" ] );
 
                 if ( $result_tasks && count( $result_tasks ) > 0 ) {
-                    $list[ "tasks" ] = $result_tasks;
+                    $list[ "number_of_tasks" ] = $result_tasks[0][ "number_of_tasks" ];
                 } else {
-                    $list[ "tasks" ] = [];
+                    $list[ "number_of_tasks" ] = 0;
                 }
             }
 
             return $result_lists;
+        } else
+            return false;
+
+    }
+
+    public function get_list( $data )
+    {
+        if ( !isset( $data->id_user ) || empty( $data->id_user ) || !isset( $data->id_list ) || empty( $data->id_list ) ) {
+            return $this->response( 0, 422, "Something went wrong!" );
+        }
+
+        $id_user = $this->escape_string( $data->id_user );
+        $id_list = $this->escape_string( $data->id_list );
+
+// get all complete tasks sorted by time when were uploaded ,also check user ID
+        if  ($id_list == "-1") {
+            $query = "SELECT ID, title, color FROM lists WHERE ID = '$id_list';";
+        }
+        else {
+            $query = "SELECT ID, title, color FROM lists WHERE id_user = '$id_user' AND ID = '$id_list';";
+        }
+
+
+        $result_list = $this->get_data( $query );
+
+
+        if ( !empty($result_list) ) {
+            $result_list = $result_list[0];
+                $result_tasks = $this->get_tasks( $id_user, $id_list );
+
+                if ( $result_tasks && count( $result_tasks ) > 0 ) {
+                    $result_list[ "tasks" ] = $result_tasks;
+                } else {
+                    $result_list[ "tasks" ] = [];
+                }
+
+            return $result_list;
         } else
             return false;
 

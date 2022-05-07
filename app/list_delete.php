@@ -1,7 +1,7 @@
 <?php
 
 if ( $_SERVER[ "REQUEST_METHOD" ] != "DELETE" ) {
-    die( include "../404.php" );
+    die( $_SERVER[ "REQUEST_METHOD" ] );
 }
 
 require_once "../_utilities/Task_List.php";

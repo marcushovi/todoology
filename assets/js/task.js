@@ -2,7 +2,7 @@ $( document ).ready( function () {
 
 
     $( "#add_task_overlay" ).hide();
-    $( "#delete_task_overlay" ).hide();
+    $( "#alert-delete-task" ).hide();
 
     // let disc = $( ".task_description" );
     //
@@ -29,9 +29,10 @@ $( document ).ready( function () {
     function reloadJS() {
         $( "script" ).each( function () {
 
-            if ( $( this ).attr( "src" ) !== undefined && ($( this ).attr( "src" ).includes( "app.js" ) || $( this ).attr( "src" ).includes( "list.js" ) || $( this ).attr( "src" ).includes( "task.js" )) )
+            if ( $( this ).attr( "src" ) !== undefined && ($( this ).attr( "src" ).includes( "app.js" ) || $( this ).attr( "src" ).includes( "list.js" ) || $( this ).attr( "src" ).includes( "task.js" ) || $( this ).attr( "src" ).includes( "flowbite.js" )) )
                 $( this ).remove();
         } );
+
 
         const s = document.createElement( 'script' );
         s.src = '../assets/js/app.js';
@@ -42,6 +43,9 @@ $( document ).ready( function () {
         const s3 = document.createElement( 'script' );
         s3.src = '../assets/js/task.js';
         document.body.appendChild( s3 );
+        const s4 = document.createElement( 'script' );
+        s4.src = '../assets/js/flowbite.js';
+        document.body.appendChild( s4 );
     }
 
     function reloadLists() {
@@ -92,18 +96,10 @@ $( document ).ready( function () {
         $( ".list" ).each( function () {
             const list_id = $( this ).find( "input[name='id_list']" ).val();
             const list_name = $( this ).find( "#list-title" ).text();
-            let list_color = $( this ).find( "#list-title" ).parent().parent().attr( "class" ).split( " " )
-
-            list_color.forEach( function ( style ) {
-                if ( style.startsWith( "bg-" ) ) {
-                    list_color = style;
-                }
-            } );
 
             lists.append( $( '<option>', {
                 value: list_id,
                 text: list_name,
-                class: list_color
             } ) );
         } );
 

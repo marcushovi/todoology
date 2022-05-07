@@ -11,13 +11,12 @@ $_list = new Task_List();
 $request_data = json_decode( file_get_contents( "php://input" ) );
 
 
-$lists = $_list->get_lists( $request_data );
+$list = $_list->get_list( $request_data );
+$list_html = "";
 
-if ( $lists ) {
-    $lists_html = "";
+if  (isset($list["ID"])) {
 
-    foreach ( $lists as &$list ) {
-        $lists_html .= '<div id="list-' . $list[ "ID" ] . '" class="list flex flex-col p-6">
+    $list_html .= '<div class="flex flex-col p-6">
 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -26,7 +25,7 @@ if ( $lists ) {
                 <span id="list-title" >' . $list[ "title" ] . '</span>
                 <span id="number-of-tasks" class="inline-block text-center text-lg font-bold text-slate-200 bg-gray-600 leading-[2rem] rounded-md shadow-md w-7 h-7 ml-4">' . count( $list[ 'tasks' ] ) . '</span>
             </h2>
-            <input type="hidden" name="id_list" value="' . $list[ "ID" ] . '">
+            
             <div class="slide_list absolute right-24 top-0 mr-4 mt-4 pl-2 flex ">
                 <button type="button"
                         class="rounded-md p-2 bg-slate-200 text-gray-300 shadow-md transition duration-200 ease focus:outline-none hover:ring-4 hover:ring-slate-500">
@@ -78,8 +77,8 @@ if ( $lists ) {
             </div>
         </div>';
 
-        if ( !empty( $list[ 'tasks' ] ) ) {
-            $lists_html .= '<table class="min-w-full divide-y divide-gray-200">
+    if ( !empty( $list[ 'tasks' ] ) ) {
+        $list_html .= '<table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
             <tr>
                 <th scope="col"
@@ -111,14 +110,13 @@ if ( $lists ) {
             </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">';
-        }
 
         foreach ( $list[ 'tasks' ] as &$task ) {
 
             if ( $task[ 'is_complete' ] == 1 ) $task[ 'is_complete' ] = 'checked';
             else $task[ 'is_complete' ] = '';
 
-            $lists_html .= '            
+            $list_html .= '            
             <tr>
                <input type="hidden" name="id_task" value="' . $task[ 'ID' ] . '" >
               <td class="task_title px-6 py-4 whitespace-nowrap text-lg max-w-lg overflow-hidden">
@@ -182,7 +180,7 @@ if ( $lists ) {
         }
 
 
-        $lists_html .= '
+        $list_html .= '
             </tbody>
         </table>
     </div>
@@ -191,23 +189,27 @@ if ( $lists ) {
 </div>';
 
 
-    }
-} else {
-    $lists_html = '<div class="flex flex-col p-6">
+    } else {
+        $list_html .= '<div class="flex flex-col p-6">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <div class="p-4 pl-8  bg-white ">
                                     <h2 class="text-2xl font-bold text-gray-900">
-                                       No Lists.
+                                       No Tasks.
                                     </h2>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>';
-}
+                </div>
+                    </div>
+</div>
+</div>
+</div>';
 
+    }
+}
 function response( $success, $status, $message, $extra = [] )
 {
     return array_merge( [
@@ -217,7 +219,7 @@ function response( $success, $status, $message, $extra = [] )
     ], $extra );
 }
 
-$response_data = response( 1, 201, "Lists reloaded", array( "data" => $lists_html ) );
+$response_data = response( 1, 201, "Lists reloaded", array( "data" => $list_html ) );
 
 
 echo json_encode( $response_data );

@@ -25,9 +25,10 @@ $( document ).ready( function () {
     function reloadJS() {
         $( "script" ).each( function () {
 
-            if ( $( this ).attr( "src" ) !== undefined && ($( this ).attr( "src" ).includes( "app.js" ) || $( this ).attr( "src" ).includes( "list.js" ) || $( this ).attr( "src" ).includes( "task.js" )) )
+            if ( $( this ).attr( "src" ) !== undefined && ($( this ).attr( "src" ).includes( "app.js" ) || $( this ).attr( "src" ).includes( "list.js" ) || $( this ).attr( "src" ).includes( "task.js" ) || $( this ).attr( "src" ).includes( "flowbite.js" )) )
                 $( this ).remove();
         } );
+
 
         const s = document.createElement( 'script' );
         s.src = '../assets/js/app.js';
@@ -38,6 +39,9 @@ $( document ).ready( function () {
         const s3 = document.createElement( 'script' );
         s3.src = '../assets/js/task.js';
         document.body.appendChild( s3 );
+        const s4 = document.createElement( 'script' );
+        s4.src = '../assets/js/flowbite.js';
+        document.body.appendChild( s4 );
     }
 
     function reloadLists() {
@@ -213,4 +217,7 @@ $( document ).ready( function () {
 
 
 } );
+
+
+
 
