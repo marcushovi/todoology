@@ -1,4 +1,4 @@
-window.reload_page =  function(id_list) {
+window.reload_page =  function(id_list='-2') {
     window.load_list(id_list);
     window.get_list_menu();
 

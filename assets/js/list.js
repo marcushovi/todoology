@@ -53,9 +53,7 @@ window.list_add = function ( id_user, id_list ) {
                 $( "body" ).append( response.message );
 
                 if ( response.success === 1 ) {
-                    window.reload_page().then( r => {
-                        window.reloadJS();
-                    } );
+                    window.reload_page();
                 }
             }
         } );
@@ -102,9 +100,7 @@ window.list_edit = function ( id_user, id_list, title, color ) {
                 $( "body" ).append( response.message );
 
                 if ( response.success === 1 ) {
-                    window.reload_page(id_list).then( r => {
-                        window.reloadJS();
-                    } );
+                    window.reload_page();
                 }
             }
 
@@ -144,9 +140,7 @@ window.list_delete = function ( id_user, id_list, title ) {
                 $( "body" ).append( response.message );
 
                 if ( response.success === 1 ) {
-                    window.reload_page(id_list).then( r => {
-                        window.reloadJS();
-                    } );
+                    window.reload_page();
                 }
             }
 

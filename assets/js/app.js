@@ -15,7 +15,7 @@ window.reloadJS = function () {
 
 }
 
-window.load_list = function ( id_list = "-2" ) {
+window.load_list = function ( id_list = "-1" ) {
 
     const id_user = $( "input[name='id_user']" ).val();
 
