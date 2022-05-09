@@ -26,10 +26,12 @@
                 </div>
             </div>
             <div class="px-4 py-3 sm:px-6 flex ">
-                <button type="button" id="yes_sign_out" class="basis-1/2 tracking-wide relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-m font-bold rounded-lg group border-2 border-red-500 hover:bg-gray-700 transition-colors group-hover:from-purple-600 group-hover:to-blue-500 text-red-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                <button type="button" id="yes_sign_out"
+                        class="basis-1/2 tracking-wide relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-m font-bold rounded-lg group border-2 border-red-500 hover:bg-gray-700 transition-colors group-hover:from-purple-600 group-hover:to-blue-500 text-red-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                     Leave
                 </button>
-                <button type="button" id="no_sign_out" class="basis-1/2 tracking-wide relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-m font-bold rounded-lg bg-red-500 text-white hover:text-gray-400 transition-colors focus:ring-4 focus:outline-none focus:ring-blue-800">
+                <button type="button" id="no_sign_out"
+                        class="basis-1/2 tracking-wide relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-m font-bold rounded-lg bg-red-500 text-white hover:text-gray-400 transition-colors focus:ring-4 focus:outline-none focus:ring-blue-800">
                     <span class="w-full relative px-5 py-2.5 ">
                         Stay
                     </span>

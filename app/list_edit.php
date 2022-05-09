@@ -3,7 +3,7 @@ session_start();
 // DATA FORM REQUEST
 $request_data = json_decode( file_get_contents( "php://input" ) );
 
-if ( $_SERVER[ "REQUEST_METHOD" ] != "PATCH" || $_SESSION['ID'] != $request_data->id_user) {
+if ( $_SERVER[ "REQUEST_METHOD" ] != "PATCH" || $_SESSION[ 'ID' ] != $request_data->id_user ) {
     die( include "../404.php" );
 }
 

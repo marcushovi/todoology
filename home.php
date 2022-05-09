@@ -16,32 +16,51 @@ include_once "_partials/header.php";
         <div class="max-w-8xl mx-auto">
             <div class="relative z-10 pb-8 bg-gray-800 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
 
-                <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 z-10 rounded dark:bg-gray-800">
+                <nav class="bg-white border-gray-200 px-2 sm:px-4 py-7 z-10 rounded dark:bg-gray-800">
                     <div class="container flex flex-wrap justify-between items-center">
                         <a href="#" class="flex items-center">
                             <img src="<?= asset( '/img/logo-full.svg' ) ?>" class="mr-3 h-6 sm:h-9" alt="Logo">
                         </a>
                         <div class="flex md:order-2">
-                            <a href="<?= asset( "login", BASE_URL ) ?>" class="mr-4 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Log In</a>
-                            <button data-collapse-toggle="mobile-menu" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-4" aria-expanded="false">
+                            <a href="<?= asset( "login", BASE_URL ) ?>"
+                               class="mr-4 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Log
+                                In</a>
+                            <button data-collapse-toggle="mobile-menu" type="button"
+                                    class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                                    aria-controls="mobile-menu-4" aria-expanded="false">
                                 <span class="sr-only">Open main menu</span>
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                                <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                          clip-rule="evenodd"></path>
+                                </svg>
+                                <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                          clip-rule="evenodd"></path>
+                                </svg>
                             </button>
                         </div>
                         <div class="hidden w-full md:block md:w-auto " id="mobile-menu">
                             <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium ">
                                 <li>
-                                    <a href="<?= asset( "", BASE_URL ) ?>" class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
+                                    <a href="<?= asset( "", BASE_URL ) ?>"
+                                       class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                                       aria-current="page">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#pricing" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
+                                    <a href="#pricing"
+                                       class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
                                 </li>
                                 <li>
-                                    <a href="#about" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                                    <a href="#about"
+                                       class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
                                 </li>
                                 <li>
-                                    <a href="#contact" class="block py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+                                    <a href="#contact"
+                                       class="block py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -55,9 +74,11 @@ include_once "_partials/header.php";
                             <span class="block xl:inline">App to enrich your</span>
                             <span class="block text-blue-600 xl:inline">Time Management</span>
                         </h1>
-                        <p class="mt-3 text-base text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Time, the only non-repurchase asset on the planet.</p>
+                        <p class="mt-3 text-base text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            Time, the only non-repurchase asset on the planet.</p>
                         <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                            <a href="#pricing" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-xl font-bold text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                            <a href="#pricing"
+                               class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-xl font-bold text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                                 <span class="relative px-8 py-4 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                         Get Started
                                 </span>
@@ -68,15 +89,19 @@ include_once "_partials/header.php";
             </div>
         </div>
         <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="">
+            <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
+                 src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+                 alt="">
         </div>
     </div>
     <div id="about" class="py-12 bg-gray-700">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:text-center">
-                <h2  class="text-base text-blue-600 font-semibold tracking-wide uppercase">TIME</h2>
-                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-200 sm:text-4xl">A better way to manage time</p>
-                <p class="mt-4 max-w-2xl text-xl text-gray-400 lg:mx-auto">Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.</p>
+                <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">TIME</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-200 sm:text-4xl">A better way
+                    to manage time</p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-400 lg:mx-auto">Lorem ipsum dolor sit amet consect
+                    adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.</p>
             </div>
 
             <div class="mt-10">
@@ -85,52 +110,74 @@ include_once "_partials/header.php";
                         <dt>
                             <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white">
                                 <!-- Heroicon name: outline/globe-alt -->
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
                                 </svg>
                             </div>
                             <p class="ml-16 text-lg leading-6 font-medium text-gray-200">Access from anywhere</p>
                         </dt>
-                        <dd class="mt-2 ml-16 text-base text-gray-400">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.</dd>
+                        <dd class="mt-2 ml-16 text-base text-gray-400">Lorem ipsum, dolor sit amet consectetur
+                            adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
+                            blanditiis ratione.
+                        </dd>
                     </div>
 
                     <div class="relative">
                         <dt>
                             <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-violet-600 text-white">
                                 <!-- Heroicon name: outline/scale -->
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
                                 </svg>
                             </div>
                             <p class="ml-16 text-lg leading-6 font-medium text-gray-200">No hidden fees</p>
                         </dt>
-                        <dd class="mt-2 ml-16 text-base text-gray-400">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.</dd>
+                        <dd class="mt-2 ml-16 text-base text-gray-400">Lorem ipsum, dolor sit amet consectetur
+                            adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
+                            blanditiis ratione.
+                        </dd>
                     </div>
 
                     <div class="relative">
                         <dt>
                             <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white">
                                 <!-- Heroicon name: outline/lightning-bolt -->
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M13 10V3L4 14h7v7l9-11h-7z"/>
                                 </svg>
                             </div>
                             <p class="ml-16 text-lg leading-6 font-medium text-gray-200">Fast Web App</p>
                         </dt>
-                        <dd class="mt-2 ml-16 text-base text-gray-400">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.</dd>
+                        <dd class="mt-2 ml-16 text-base text-gray-400">Lorem ipsum, dolor sit amet consectetur
+                            adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
+                            blanditiis ratione.
+                        </dd>
                     </div>
 
                     <div class="relative">
                         <dt>
                             <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-violet-600 text-white">
                                 <!-- Heroicon name: outline/annotation -->
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
                                 </svg>
                             </div>
-                            <p class="ml-16 text-lg leading-6 font-medium text-gray-200">Mobile notifications<span class="text-base text-red-400 font-semibold tracking-wide "> In development</span></p>
+                            <p class="ml-16 text-lg leading-6 font-medium text-gray-200">Mobile notifications<span
+                                        class="text-base text-red-400 font-semibold tracking-wide "> In development</span>
+                            </p>
                         </dt>
-                        <dd class="mt-2 ml-16 text-base text-gray-400">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.</dd>
+                        <dd class="mt-2 ml-16 text-base text-gray-400">Lorem ipsum, dolor sit amet consectetur
+                            adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
+                            blanditiis ratione.
+                        </dd>
                     </div>
                 </dl>
             </div>
@@ -145,96 +192,103 @@ include_once "_partials/header.php";
         </div>
     </div>
 
-<div  class="bg-gray-700">
-    <div class="relative max-w-screen-xl mx-auto lg:mb-0 px-4 sm:px-6 lg:px-8">
-        <div class="pricing-box max-w-lg mx-auto rounded-lg overflow-hidden lg:max-w-none lg:flex">
-            <div class="px-6 py-8 lg:flex-shrink-1 lg:p-12">
-                <h3  class="text-2xl leading-8 font-extrabold text-gray-900 sm:text-3xl sm:leading-9 dark:text-white">
-                    Pricing
-                </h3>
-                <p class="mt-6 text-base leading-6 text-gray-500 dark:text-gray-200">
-                    Start selling online for free with all the features you need to launch your local delivery and pick-up service, nothing more. We don&#x27;t charge commission or monthly fees, keep all your margin.
-                </p>
-                <div class="mt-8">
-                    <div class="flex items-center">
-                        <h4 class="flex-shrink-0 pr-4 text-m leading-5 tracking-wider font-bold text-blue-600">
-                            What&#x27;s included
-                        </h4>
+    <div class="bg-gray-700">
+        <div class="relative max-w-screen-xl mx-auto lg:mb-0 px-4 sm:px-6 lg:px-8">
+            <div class="pricing-box max-w-lg mx-auto rounded-lg overflow-hidden lg:max-w-none lg:flex">
+                <div class="px-6 py-8 lg:flex-shrink-1 lg:p-12">
+                    <h3 class="text-2xl leading-8 font-extrabold text-gray-900 sm:text-3xl sm:leading-9 dark:text-white">
+                        Pricing
+                    </h3>
+                    <p class="mt-6 text-base leading-6 text-gray-500 dark:text-gray-200">
+                        Start selling online for free with all the features you need to launch your local delivery and
+                        pick-up service, nothing more. We don&#x27;t charge commission or monthly fees, keep all your
+                        margin.
+                    </p>
+                    <div class="mt-8">
+                        <div class="flex items-center">
+                            <h4 class="flex-shrink-0 pr-4 text-m leading-5 tracking-wider font-bold text-blue-600">
+                                What&#x27;s included
+                            </h4>
+                        </div>
+                        <ul class="mt-8 lg:grid lg:grid-cols-2 lg:col-gap-8 lg:row-gap-5">
+                            <li class="flex items-start lg:col-span-1">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" width="6" height="6"
+                                         stroke="currentColor" fill="#31C48D" viewBox="0 0 1792 1792">
+                                        <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-sm leading-5 text-gray-700 dark:text-gray-200">
+                                    All features
+                                </p>
+                            </li>
+                            <li class="flex items-start lg:col-span-1">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" width="6" height="6"
+                                         stroke="currentColor" fill="#31C48D" viewBox="0 0 1792 1792">
+                                        <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-sm leading-5 text-gray-700 dark:text-gray-200">
+                                    5GB of disk memory
+                                </p>
+                            </li>
+                            <li class="flex items-start lg:col-span-1">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" width="6" height="6"
+                                         stroke="currentColor" fill="#31C48D" viewBox="0 0 1792 1792">
+                                        <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-sm leading-5 text-gray-700 dark:text-gray-200">
+                                    Up to 5 devices
+                                </p>
+                            </li>
+                            <li class="flex items-start lg:col-span-1">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" width="6" height="6"
+                                         stroke="currentColor" fill="#31C48D" viewBox="0 0 1792 1792">
+                                        <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-sm leading-5 text-gray-700 dark:text-gray-200">
+                                    Nice looking UI
+                                </p>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="mt-8 lg:grid lg:grid-cols-2 lg:col-gap-8 lg:row-gap-5">
-                        <li class="flex items-start lg:col-span-1">
-                            <div class="flex-shrink-0">
-                                <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" width="6" height="6" stroke="currentColor" fill="#31C48D" viewBox="0 0 1792 1792">
-                                    <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <p class="ml-3 text-sm leading-5 text-gray-700 dark:text-gray-200">
-                                All features
-                            </p>
-                        </li>
-                        <li class="flex items-start lg:col-span-1">
-                            <div class="flex-shrink-0">
-                                <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" width="6" height="6" stroke="currentColor" fill="#31C48D" viewBox="0 0 1792 1792">
-                                    <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <p class="ml-3 text-sm leading-5 text-gray-700 dark:text-gray-200">
-                                5GB of disk memory
-                            </p>
-                        </li>
-                        <li class="flex items-start lg:col-span-1">
-                            <div class="flex-shrink-0">
-                                <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" width="6" height="6" stroke="currentColor" fill="#31C48D" viewBox="0 0 1792 1792">
-                                    <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <p class="ml-3 text-sm leading-5 text-gray-700 dark:text-gray-200">
-                                Up to 5 devices
-                            </p>
-                        </li>
-                        <li class="flex items-start lg:col-span-1">
-                            <div class="flex-shrink-0">
-                                <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" width="6" height="6" stroke="currentColor" fill="#31C48D" viewBox="0 0 1792 1792">
-                                    <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <p class="ml-3 text-sm leading-5 text-gray-700 dark:text-gray-200">
-                                Nice looking UI
-                            </p>
-                        </li>
-                    </ul>
-                </div>
 
-            </div>
-            <div class="py-8 px-6 text-center bg-gray-50 dark:bg-gray-700 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12">
-                <div class="mt-4 flex items-center justify-center text-5xl leading-none font-extrabold text-gray-900 dark:text-white">
+                </div>
+                <div class="py-8 px-6 text-center bg-gray-50 dark:bg-gray-700 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12">
+                    <div class="mt-4 flex items-center justify-center text-5xl leading-none font-extrabold text-gray-900 dark:text-white">
                 <span>
                     €5/mon
                 </span>
-                </div>
-                <p class="mt-4 text-sm leading-5">
+                    </div>
+                    <p class="mt-4 text-sm leading-5">
                 <span class="block font-medium text-gray-500 dark:text-gray-400">
                     Card payments:
                 </span>
-                    <span class=" inline-block font-medium text-gray-500 dark:text-gray-400">
+                        <span class=" inline-block font-medium text-gray-500 dark:text-gray-400">
                     3% per transaction
                 </span>
-                </p>
-                <div class="mt-6">
-                    <div class="rounded-md ">
-                        <a href="<?= asset( "signup", BASE_URL ) ?>" class="mr-4 text-white text-lg font-bold bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-6 py-4 text-center">
-                            Manage your time!
-                        </a>
+                    </p>
+                    <div class="mt-6">
+                        <div class="rounded-md ">
+                            <a href="<?= asset( "signup", BASE_URL ) ?>"
+                               class="mr-4 text-white text-lg font-bold bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-6 py-4 text-center">
+                                Manage your time!
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
     <div id="contact" class="bg-gray-800">
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-end">
@@ -249,7 +303,8 @@ include_once "_partials/header.php";
     <footer class="text-center bg-gray-800 text-white">
         <div class="container px-6 pt-6">
             <div class="flex justify-center mb-6">
-                <a href="#!" type="button" class="rounded-full border-2 border-blue-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
+                <a href="#!" type="button"
+                   class="rounded-full border-2 border-blue-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
                     <svg aria-hidden="true"
                          focusable="false"
                          data-prefix="fab"
@@ -266,7 +321,8 @@ include_once "_partials/header.php";
                     </svg>
                 </a>
 
-                <a href="#!" type="button" class="rounded-full border-2 border-violet-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
+                <a href="#!" type="button"
+                   class="rounded-full border-2 border-violet-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
                     <svg aria-hidden="true"
                          focusable="false"
                          data-prefix="fab"
@@ -283,7 +339,8 @@ include_once "_partials/header.php";
                     </svg>
                 </a>
 
-                <a href="#!" type="button" class="rounded-full border-2 border-blue-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
+                <a href="#!" type="button"
+                   class="rounded-full border-2 border-blue-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
                     <svg aria-hidden="true"
                          focusable="false"
                          data-prefix="fab"
@@ -300,7 +357,8 @@ include_once "_partials/header.php";
                     </svg>
                 </a>
 
-                <a href="#!" type="button" class="rounded-full border-2 border-violet-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
+                <a href="#!" type="button"
+                   class="rounded-full border-2 border-violet-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
                     <svg aria-hidden="true"
                          focusable="false"
                          data-prefix="fab"
@@ -317,7 +375,8 @@ include_once "_partials/header.php";
                     </svg>
                 </a>
 
-                <a href="#!" type="button" class="rounded-full border-2 border-blue-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
+                <a href="#!" type="button"
+                   class="rounded-full border-2 border-blue-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
                     <svg aria-hidden="true"
                          focusable="false"
                          data-prefix="fab"
@@ -334,7 +393,8 @@ include_once "_partials/header.php";
                     </svg>
                 </a>
 
-                <a href="#" type="button" class="rounded-full border-2 border-violet-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
+                <a href="#" type="button"
+                   class="rounded-full border-2 border-violet-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
                     <svg aria-hidden="true"
                          focusable="false"
                          data-prefix="fab"
@@ -359,7 +419,6 @@ include_once "_partials/header.php";
             . All Rights Reserved.
         </div>
     </footer>
-
 
 
     <!-- import footer -->

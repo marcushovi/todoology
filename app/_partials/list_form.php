@@ -41,14 +41,16 @@
                                       class="form-ajax relative w-full space-y-8">
                                     <div class="relative">
                                         <label class="text-xl font-bold text-white"
-                                               for="list_title">Title <span class="float-right mr-4 text-red-500 text-sm">Required</span></label>
+                                               for="list_title">Title <span
+                                                    class="float-right mr-4 text-red-500 text-sm">Required</span></label>
                                         <input type="text" name="list_title"
                                                class="block w-full px-4 py-4 mt-2 text-xl shadow-md placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50"
                                                placeholder="Enter Title">
                                     </div>
                                     <div class="relative">
                                         <label class="text-xl font-bold text-white"
-                                               for="list_color">Color<span class="float-right mr-4 text-red-500 text-sm">Required</span></label>
+                                               for="list_color">Color<span
+                                                    class="float-right mr-4 text-red-500 text-sm">Required</span></label>
                                         <select name="list_color"
                                                 class="appearance-none block w-full px-4 py-4 mt-2 text-xl shadow-md placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50">
                                             <option value="bg-pink-500" class="bg-pink-500">Pink</option>
@@ -63,8 +65,10 @@
                                         </select>
                                     </div>
                                     <div class="relative">
-                                        <button type="button"  class="w-full relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-                                            <span id="add_list_button" class="w-full p-3 text-lg font-bold weight-md relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                        <button type="button"
+                                                class="w-full relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                                            <span id="add_list_button"
+                                                  class="w-full p-3 text-lg font-bold weight-md relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                                 ADD
                                             </span>
                                         </button>

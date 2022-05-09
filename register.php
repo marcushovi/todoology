@@ -84,7 +84,7 @@ if ( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "
                 $password = "";
                 $conPassword = "";
 
-                header('Location: ./log_in.php');
+                header( 'Location: ./log_in.php' );
                 die();
             } else {
                 $alert->error( "Sorry, there was a problem connecting to the server." );
@@ -114,7 +114,8 @@ if ( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "
         <div>
             <div class="w-full flex flex-col items-around lg:flex-row ">
                 <div class="w-full bg-cover flex-wrap grow shrink lg:basis-6/12 xl:basis-7/12 bg-gradient-to-r from-violet-600  to-blue-500">
-                    <p class="absolute left-8 top-2 z-10 text-lg text-right text-gray-300 m-3 ">Back to <a href="<?= asset( "", BASE_URL ) ?>" class="text-gray-800 underline">Home</a></p>
+                    <p class="absolute left-8 top-2 z-10 text-lg text-right text-gray-300 m-3 ">Back to <a
+                                href="<?= asset( "", BASE_URL ) ?>" class="text-gray-800 underline">Home</a></p>
                     <div class="relative flex flex-col items-center justify-center w-full h-full px-10 my-20 lg:px-16 lg:my-0">
                         <div class="flex flex-col items-start space-y-8 tracking-tight mb-16 lg:max-w-3xl">
                             <div class="relative">
@@ -178,7 +179,8 @@ if ( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "
                                         </span>
                                 </button>
                                 <p class="text-lg text-gray-500 m-3 ">or, if you have an account you can
-                                    <a href="<?= asset( "/login", BASE_URL ) ?>" class="text-blue-600 underline">Log in</a>
+                                    <a href="<?= asset( "/login", BASE_URL ) ?>" class="text-blue-600 underline">Log
+                                        in</a>
                                 </p>
                             </div>
 
@@ -189,7 +191,6 @@ if ( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "
         </div>
 
     </section>
-
 
 
     <!-- change title -->
