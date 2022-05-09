@@ -1,4 +1,3 @@
-
 export class Utilities {
 
     constructor() {
@@ -14,7 +13,7 @@ export class Utilities {
         }
     }
 
-    static loadList( id_list= "-1") {
+    static loadList( id_list = "-1" ) {
 
 
         const id_user = $( "input[name='id_user']" ).val();
@@ -46,7 +45,7 @@ export class Utilities {
         } );
     }
 
-    static get_list_menu(){
+    static get_list_menu() {
 
         const id_user = $( "input[name='id_user']" ).val();
 

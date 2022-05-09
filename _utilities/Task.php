@@ -22,49 +22,9 @@ class Task extends Crud
 
         if ( $date ) {
             $query = "SELECT ID, id_list, title, description, deadline, priority, is_complete FROM tasks WHERE id_user = '$id_user' AND  " . $date . "  ORDER BY is_complete ASC ;";
-        }
-        else {
+        } else {
             $query = "SELECT ID, id_list, title, description, deadline, priority, is_complete FROM tasks WHERE id_user = '$id_user' AND id_list = '$id_list' ORDER BY is_complete ASC ;";
         }
-
-        $result = $this->get_data( $query );
-
-        if ( $result && count( $result ) > 0 )
-            return $result;
-        else
-            return false;
-    }
-
-    public function get_tasks_number( $id_user, $id_list )
-    {
-        if ( !isset( $id_user ) || empty( $id_user ) || !isset( $id_list ) || empty( $id_list ) ) {
-            return $this->response( 0, 422, "We have a problem on the server side. Please contact the admin server." );
-        }
-
-        $id_user = $this->escape_string( $id_user );
-        $id_list = $this->escape_string( $id_list );
-        // get all complete tasks sorted by time when were uploaded ,also check user ID
-
-        $date = false;
-
-        switch ( intval($id_list) ){
-            case -2:
-                $date = " DATE(deadline) = DATE(NOW()) ";
-                break;
-            case -3:
-                $date = " DATEDIFF(deadline, CURDATE()) = 1 ";
-                break;
-        }
-
-        if  ($date) {
-            $query = "SELECT COUNT(ID) AS number_of_tasks FROM tasks WHERE id_user = '$id_user' AND is_complete = 0 AND " . $date . " ;";
-        }
-        else {
-            $query = "SELECT COUNT(ID) AS number_of_tasks FROM tasks WHERE id_user = '$id_user' AND id_list = '$id_list' AND is_complete = 0;";
-        }
-
-
-
 
         $result = $this->get_data( $query );
 
@@ -91,6 +51,42 @@ class Task extends Crud
             'status' => $status,
             'message' => $message
         ], $extra );
+    }
+
+    public function get_tasks_number( $id_user, $id_list )
+    {
+        if ( !isset( $id_user ) || empty( $id_user ) || !isset( $id_list ) || empty( $id_list ) ) {
+            return $this->response( 0, 422, "We have a problem on the server side. Please contact the admin server." );
+        }
+
+        $id_user = $this->escape_string( $id_user );
+        $id_list = $this->escape_string( $id_list );
+        // get all complete tasks sorted by time when were uploaded ,also check user ID
+
+        $date = false;
+
+        switch ( intval( $id_list ) ) {
+            case -2:
+                $date = " DATE(deadline) = DATE(NOW()) ";
+                break;
+            case -3:
+                $date = " DATEDIFF(deadline, CURDATE()) = 1 ";
+                break;
+        }
+
+        if ( $date ) {
+            $query = "SELECT COUNT(ID) AS number_of_tasks FROM tasks WHERE id_user = '$id_user' AND is_complete = 0 AND " . $date . " ;";
+        } else {
+            $query = "SELECT COUNT(ID) AS number_of_tasks FROM tasks WHERE id_user = '$id_user' AND id_list = '$id_list' AND is_complete = 0;";
+        }
+
+
+        $result = $this->get_data( $query );
+
+        if ( $result && count( $result ) > 0 )
+            return $result;
+        else
+            return false;
     }
 
     public function create_task( $data )

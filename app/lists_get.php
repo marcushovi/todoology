@@ -3,7 +3,7 @@ session_start();
 // DATA FORM REQUEST
 $request_data = json_decode( file_get_contents( "php://input" ) );
 
-if ( $_SERVER[ "REQUEST_METHOD" ] != "POST" || $_SESSION['ID'] != $request_data->id_user) {
+if ( $_SERVER[ "REQUEST_METHOD" ] != "POST" || $_SESSION[ 'ID' ] != $request_data->id_user ) {
     die( include "../404.php" );
 }
 
@@ -21,14 +21,14 @@ if ( $lists ) {
 
     foreach ( $lists as &$list ) {
 
-        $list[ "count" ] = $list[ "ID" ] < -1 ? "": "list-task-number";
+        $list[ "count" ] = $list[ "ID" ] < -1 ? "" : "list-task-number";
 
         $lists_html .= '<li id="list-' . $list[ "ID" ] . '" class="list " >
                         <input type="hidden" name="id_list" value="' . $list[ "ID" ] . '">
                         <button onclick="window.reload_list(' . $list[ "ID" ] . ').then( r => {
 //                        window.reloadJS();
-                    } );" class="w-full text-left flex items-center p-4 text-base text-white rounded-lg font-medium border-2 border-transparent transition-colors  hover:border-' . substr($list[ "color" ], 3) . ' focus:border-' . substr($list[ "color" ], 3) . '">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="text-' . substr($list[ "color" ], 3) . '" viewBox="0 0 16 16">
+                    } );" class="w-full text-left flex items-center p-4 text-base text-white rounded-lg font-medium border-2 border-transparent transition-colors  hover:border-' . substr( $list[ "color" ], 3 ) . ' focus:border-' . substr( $list[ "color" ], 3 ) . '">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="text-' . substr( $list[ "color" ], 3 ) . '" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z"/>
                         </svg>
                         <span class="flex-1 ml-3 whitespace-nowrap max-w-xs overflow-hidden" id="list-title">' . $list[ "title" ] . '</span>
@@ -37,7 +37,7 @@ if ( $lists ) {
     }
 
     $lists_html .= '<li class="pt-6 mt-6 space-y-2 border-t-2 border-gray-400">
-                        <button type="button" onclick="window.list_add( \''. $_SESSION['ID'] . '\',\'' . $list[ "ID" ]  .'\' )" class="w-full  p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                        <button type="button" onclick="window.list_add( \'' . $_SESSION[ 'ID' ] . '\',\'' . $list[ "ID" ] . '\' )" class="w-full  p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                                                 <span class="flex items-center justify-center whitespace-nowrap tracking-wider  w-full p-3 text-lg font-bold weight-md relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0" id="list-title">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="inline-block mr-3" viewBox="0 0 16 16">
                                                     <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"/>

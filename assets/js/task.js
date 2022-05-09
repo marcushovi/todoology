@@ -14,7 +14,7 @@ function prepare_form_task( title, button, titleField, textarea, datetime_field,
         const list_id = $( this ).find( "input[name='id_list']" ).val();
         const list_name = $( this ).find( "#list-title" ).text();
 
-        if (parseInt(list_id) > -2){
+        if ( parseInt( list_id ) > -2 ) {
             lists.append( $( '<option>', {
                 value: list_id,
                 text: list_name,
@@ -35,7 +35,6 @@ function prepare_form_task( title, button, titleField, textarea, datetime_field,
 
     $( modal ).fadeIn( 400 );
 }
-
 
 
 // if you click "Add List"  button
@@ -88,7 +87,7 @@ window.task_add = function () {
                 $( "body" ).append( response.message );
                 if ( response.success === 1 ) {
                     setTimeout( function () {
-                        window.reload_page(task_list_id);
+                        window.reload_page( task_list_id );
                     }, 500 );
                 }
             }
@@ -149,7 +148,7 @@ window.task_edit = function ( id_task, id_user, title_field, desc_field, datetim
                 $( "body" ).append( response.message );
                 if ( response.success === 1 ) {
                     setTimeout( function () {
-                        window.reload_page(task_list_id);
+                        window.reload_page( task_list_id );
 
                     }, 500 );
                 }
@@ -194,7 +193,7 @@ window.task_delete = function ( id_task, id_user, title ) {
                 $( "body" ).append( response.message );
                 if ( response.success === 1 ) {
                     setTimeout( function () {
-                        window.reload_page(task_list_id);
+                        window.reload_page( task_list_id );
 
                     }, 500 );
                 }
@@ -211,7 +210,7 @@ window.task_delete_close = function () {
 
 
 window.task_fade_out = function () {
-    $( ".complete_task[checked]" ).parent().parent().fadeTo( 'fast', 0.33 ).addClass("bg-gray-800");
+    $( ".complete_task[checked]" ).parent().parent().fadeTo( 'fast', 0.33 ).addClass( "bg-gray-800" );
 }
 
 window.task_complete = function ( id_task, id_user, is_complete ) {
@@ -243,7 +242,7 @@ window.task_complete = function ( id_task, id_user, is_complete ) {
             $( "body" ).append( response.message );
             if ( response.success === 1 ) {
                 setTimeout( function () {
-                    window.reload_page(task_list_id);
+                    window.reload_page( task_list_id );
 
                 }, 500 );
             }

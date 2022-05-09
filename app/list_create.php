@@ -4,14 +4,14 @@ session_start();
 // DATA FORM REQUEST
 $request_data = json_decode( file_get_contents( "php://input" ) );
 
-if ( $_SERVER[ "REQUEST_METHOD" ] != "POST" || $_SESSION['ID'] != $request_data->id_user) {
+if ( $_SERVER[ "REQUEST_METHOD" ] != "POST" || $_SESSION[ 'ID' ] != $request_data->id_user ) {
     die( include "../404.php" );
 }
 require_once "../_utilities/Task_List.php";
 
 $list = new Task_List();
 
-$response_data = $list->create_list( $request_data  );
+$response_data = $list->create_list( $request_data );
 
 
 header( "Access-Control-Allow-Methods: POST" );

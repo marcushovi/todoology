@@ -100,7 +100,7 @@ window.list_edit = function ( id_user, id_list, title, color ) {
                 $( "body" ).append( response.message );
 
                 if ( response.success === 1 ) {
-                    window.reload_page(id_list);
+                    window.reload_page( id_list );
                 }
             }
 

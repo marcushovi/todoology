@@ -68,7 +68,7 @@ class Task_List extends Task
                 $result_tasks = $this->get_tasks_number( $id_user, $list[ "ID" ] );
 
                 if ( $result_tasks && count( $result_tasks ) > 0 ) {
-                    $list[ "number_of_tasks" ] = $result_tasks[0][ "number_of_tasks" ];
+                    $list[ "number_of_tasks" ] = $result_tasks[ 0 ][ "number_of_tasks" ];
                 } else {
                     $list[ "number_of_tasks" ] = 0;
                 }
@@ -90,23 +90,22 @@ class Task_List extends Task
         $id_list = $this->escape_string( $data->id_list );
 
 // get all complete tasks sorted by time when were uploaded ,also check user ID
-        if  (intval($id_list) < 0) {
+        if ( intval( $id_list ) < 0 ) {
             $query = "SELECT ID, title, color FROM lists WHERE ID = '$id_list';";
-        }
-        else {
+        } else {
             $query = "SELECT ID, title, color FROM lists WHERE id_user = '$id_user' AND ID = '$id_list';";
         }
 
 
         $result_list = $this->get_data( $query );
 
-        $result_list = $result_list[0];
-        if ( !empty($result_list) ) {
+        $result_list = $result_list[ 0 ];
+        if ( !empty( $result_list ) ) {
 
             $date = false;
 
 
-            switch ( intval($id_list) ){
+            switch ( intval( $id_list ) ) {
                 case -2:
                     $date = " DATE(deadline) = DATE(NOW()) ";
                     break;

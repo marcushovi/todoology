@@ -84,7 +84,8 @@ if ( isset( $_POST[ "email" ] ) && isset( $_POST[ "password" ] ) ) {
         <div>
             <div class="flex flex-col h-screen w-screen lg:flex-row ">
                 <div class="relative w-full bg-cover lg:w-6/12 xl:w-7/12 bg-gradient-to-r from-violet-600  to-blue-500">
-                    <p class="absolute left-8 top-2 z-10 text-lg text-right text-gray-300 m-3 ">Back to <a href="<?= asset( "", BASE_URL ) ?>" class="text-gray-800 underline">Home</a></p>
+                    <p class="absolute left-8 top-2 z-10 text-lg text-right text-gray-300 m-3 ">Back to <a
+                                href="<?= asset( "", BASE_URL ) ?>" class="text-gray-800 underline">Home</a></p>
                     <div class="relative flex flex-col items-center justify-center w-full h-full px-10 my-20 lg:px-16 lg:my-0">
                         <div class="flex flex-col items-start space-y-8 tracking-tight mb-16 lg:max-w-3xl">
                             <div class="relative">
@@ -134,7 +135,8 @@ if ( isset( $_POST[ "email" ] ) && isset( $_POST[ "password" ] ) ) {
                                         </span>
                                 </button>
                                 <p class="text-lg text-gray-300 m-3 ">or, if you don't have an account you can <a
-                                            href="<?= asset( "signup", BASE_URL ) ?>" class="text-blue-600 underline">Sign up</a></p>
+                                            href="<?= asset( "signup", BASE_URL ) ?>" class="text-blue-600 underline">Sign
+                                        up</a></p>
                             </div>
 
                         </form>
