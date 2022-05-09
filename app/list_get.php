@@ -74,30 +74,30 @@ if  (isset($list["ID"])) {
         ';
 
     if ( !empty( $list[ 'tasks' ] ) ) {
-        $list_html .= '<table class="min-w-full mt-1  transition-all" id="list-' . $list[ "ID" ] . '-table">
+        $list_html .= '<table class="min-w-full mt-1  mb-44 md:mb-0  transition-all" id="list-' . $list[ "ID" ] . '-table">
             <thead class="bg-gray-700 text-gray-400 transition-all">
             <tr>
                 <th scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
+                    class="p-2 md:px-6 md:py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
                     Complete
                 </th>
                 <th scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
+                    class="p-2 md:px-6 md:py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
                     Title
                 </th>
                 <th scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
+                    class="p-2 md:px-6 md:py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
                     Priority
                 </th>
                 <th scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
+                    class="p-2 md:px-6 md:py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
                     Deadline
                 </th>
                 <th scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
+                    class="p-2 md:px-6 md:py-3 text-left text-xs font-medium uppercase tracking-wider w-fit hidden md:block">
                     Description
                 </th>
-                <th scope="col" class="relative px-6 py-3">
+                <th scope="col" class="relative p-2 md:px-6 md:py-3">
                     <span class="sr-only">Functions</span>
                 </th>
             </tr>
@@ -112,24 +112,24 @@ if  (isset($list["ID"])) {
             $list_html .= '            
             <tr>
                <input type="hidden" name="id_task" value="' . $task[ 'ID' ] . '" >
-               <td class="px-6 py-4  text-sm">
-                <input ' . $task[ 'is_complete_checkbox' ] . ' onclick="window.task_complete(\'' . $task[ 'ID' ] . '\', \'' . $_SESSION[ "ID" ] . '\', \'' . $task[ 'is_complete' ] . '\' )" type="checkbox" class="complete_task block w-5 h-5 px-4 py-4 mt-2 text-green-600 rounded bg-gray-700 focus:ring-green-500 focus:ring-2 border-gray-600 border-2 hover:border-green-500">
+               <td class=" md:px-6 md:py-4  text-xs md:text-m">
+                <input ' . $task[ 'is_complete_checkbox' ] . ' onclick="window.task_complete(\'' . $task[ 'ID' ] . '\', \'' . $_SESSION[ "ID" ] . '\', \'' . $task[ 'is_complete' ] . '\' )" type="checkbox" class="complete_task mx-auto block w-5 h-5 px-2 py-2 md:px-4 md:py-4 mt-2 text-green-600 rounded bg-gray-700 focus:ring-green-500 focus:ring-2 border-gray-600 border-2 hover:border-green-500">
                 
               </td>
-              <td class="task_title px-6 py-4  text-lg max-w-xs overflow-hidden">
+              <td class="task_title md:px-6 md:py-4 text-xs md:text-lg max-w-xs overflow-hidden">
                     ' . $task[ 'title' ] . '
               </td>
-              <td class="px-6 py-4  w-fit">
-                <span class="w-6 h-6 px-2 inline-flex text-xs leading-5 font-semibold rounded-full shadow-md ' . $task[ 'priority' ] . ' text-gray-800">
+              <td class="md:px-6 md:py-4  w-fit">
+                <span class="w-6 h-6 px-2  inline-flex text-xs leading-5 font-semibold rounded-full shadow-md ' . $task[ 'priority' ] . ' text-gray-800">
                 </span>
               </td>
-              <td class="px-6 py-4  text-m">
+              <td class="md:px-6 md:py-4  text-xs md:text-m">
                 ' . $task[ 'deadline' ] . '
               </td>
-              <td class="task_description px-6 py-4 max-w-xs overflow-hidden">
+              <td class="task_description px-6 py-4 max-w-xs overflow-hidden hidden md:block">
                 ' . $task[ 'description' ] . '
               </td>
-              <td class="px-6 py-4  text-right text-sm font-medium w-fit">
+              <td class="md:px-6 md:py-4  text-right text-xs md:text-m font-medium w-fit">
                 <div class="flex ">
                 <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar-' . $task[ 'ID' ] . '" class="inline-flex items-center justify-center p-0.5 m-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group ' . $list[ "color" ] . ' group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                     <span class="flex-1 whitespace-nowrap w-full text-lg font-bold weight-md relative px-2 py-1.5 transition-all ease-in duration-75 bg-gray-800 bg-opacity-75  rounded-md group-hover:bg-opacity-0">

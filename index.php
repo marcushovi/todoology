@@ -4,9 +4,12 @@ require_once __DIR__ . '/_utilities/_config.php';
 
 $routes = [
     '/' => [
+        'GET' => 'home.php',
+    ],
+    '/login' => [
         'GET' => 'log_in.php',
     ],
-    '/register' => [
+    '/signup' => [
         'GET' => 'register.php',
     ]
 ];

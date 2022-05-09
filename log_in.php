@@ -51,7 +51,7 @@ if ( isset( $_POST[ "email" ] ) && isset( $_POST[ "password" ] ) ) {
                 }
 
             }
-            $_SESSION[ "token " ] =
+            $_SESSION[ "token" ] =
                 // and redirect user to app
                 header( "Location: app/" );
 
@@ -131,7 +131,7 @@ if ( isset( $_POST[ "email" ] ) && isset( $_POST[ "password" ] ) ) {
                                         </span>
                                 </button>
                                 <p class="text-lg text-gray-300 m-3 ">or, if you don't have an account you can <a
-                                            href="<?= asset( "register", BASE_URL ) ?>" class="text-blue-600 underline">sign
+                                            href="<?= asset( "signup", BASE_URL ) ?>" class="text-blue-600 underline">sign
                                         up</a></p>
                             </div>
 

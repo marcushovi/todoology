@@ -177,7 +177,7 @@ if ( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "
                                         </span>
                                 </button>
                                 <p class="text-lg text-gray-500 m-3 ">or, if you have an account you can
-                                    <a href="<?= asset( "/", BASE_URL ) ?>" class="text-blue-600 underline">Log in</a>
+                                    <a href="<?= asset( "/login", BASE_URL ) ?>" class="text-blue-600 underline">Log in</a>
                                 </p>
                             </div>
 

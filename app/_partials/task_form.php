@@ -35,7 +35,7 @@
 
                     <div class="mt-2 relative flex-1 px-4 sm:px-6">
                         <div class="h-96 h-auto inline-block min-w-full ">
-                            <div class="m-6 px-8 py-6">
+                            <div class="md:m-6 md:px-8 md:py-6">
                                 <form method="POST" action="#" enctype="multipart/form-data"
                                       class="form-ajax relative w-full space-y-8">
                                     <div class="relative m-auto w-fit">
