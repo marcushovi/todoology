@@ -1,5 +1,9 @@
 <?php
-if ( $_SERVER[ "REQUEST_METHOD" ] != "POST" ) {
+session_start();
+// DATA FORM REQUEST
+$request_data = json_decode( file_get_contents( "php://input" ) );
+
+if ( $_SERVER[ "REQUEST_METHOD" ] != "POST" || $_SESSION['ID'] != $request_data->id_user) {
     die( include "../404.php" );
 }
 
@@ -7,174 +11,155 @@ require_once "../_utilities/Task_List.php";
 $_list = new Task_List();
 
 
-// DATA FORM REQUEST
-$request_data = json_decode( file_get_contents( "php://input" ) );
-
-
 $list = $_list->get_list( $request_data );
 $list_html = "";
 
 if  (isset($list["ID"])) {
 
-    $list_html .= '<div class="flex flex-col p-6">
-<div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+
+    $list[ "disabled" ][0] = intval($list[ "ID" ])  < 0  ? "disabled" : "";
+    $list[ "disabled" ][1] = intval($list[ "ID" ]) < 0 ? "cursor-not-allowed" : "";
+
+
+    $list["delete_call"] = $_SESSION['ID'] . ', ' . $list[ "ID" ].', '. $list[ "title" ];
+
+    $list_html .= '<div class="flex flex-col ">
+<div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="shadow-lg overflow-hidden sm:rounded-lg">
         <input type="hidden" name="id_showed_list" value="' . $list[ "ID" ] . '">
-            <div class="relative p-4 pl-8  ' . $list[ "color" ] . ' ">
-            <h2 class="text-2xl font-bold text-gray-200">
-                <span id="list-title" >' . $list[ "title" ] . '</span>
-                <span id="number-of-tasks" class="inline-block text-center text-lg font-bold text-slate-200 bg-gray-600 leading-[2rem] rounded-md shadow-md w-7 h-7 ml-4">' . count( $list[ 'tasks' ] ) . '</span>
-            </h2>
+            <div class="flex items-nowrap items-center justify-between p-4 pl-8 rounded-t-xl border-dashed border-4 border-' . substr($list[ "color" ], 3) . ' ">
             
-            <div class="slide_list absolute right-24 top-0 mr-4 mt-4 pl-2 flex ">
-                <button type="button"
-                        class="rounded-md p-2 bg-slate-200 text-gray-300 shadow-md transition duration-200 ease focus:outline-none hover:ring-4 hover:ring-slate-500">
-                    <span class="sr-only">Slide List</span>
-                    <svg width="16" height="16" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="75" cy="75" r="20" fill="black" fill-opacity="0.5"/>
-                        <circle cx="75" cy="20" r="20" fill="black" fill-opacity="0.5"/>
-                        <circle cx="75" cy="130" r="20" fill="black" fill-opacity="0.5"/>
-                    </svg>
-
-                </button>
-            </div>
-            <div class="edit_list absolute right-12 top-0 mr-4 mt-4 pl-2 flex ">
-                <button type="button"
-                        class="rounded-md p-2 bg-slate-200 text-gray-300 shadow-md transition duration-200 ease focus:outline-none hover:ring-4 hover:ring-blue-500">
-                    <span class="sr-only">Edit List</span>
-                    <svg width="16" height="16" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0)">
-                        <rect x="56.1655" y="110.846" width="23.0331" height="127.165" rx="11.5165"
-                            transform="rotate(-135 56.1655 110.846)" fill="#0040FF" fill-opacity="0.5" stroke="white"
-                            stroke-width="6"/>
-                        <path d="M15.4134 131.025L23.4344 101.09C24.1317 98.4879 27.3848 97.6163 29.29 99.5214L51.2038 121.435C53.109 123.34 52.2373 126.594 49.6348 127.291L19.7 135.312C17.0975 136.009 14.716 133.628 15.4134 131.025Z"
-                            fill="#0040FF" fill-opacity="0.5" stroke="white" stroke-width="6"/>
-                        </g>
-                        <defs>
-                        <clipPath id="clip0">
-                            <rect width="150" height="150" fill="white"/>
-                        </clipPath>
-                        </defs>
-                    </svg>
-
-                </button>
-            </div>
-            <div class="delete_list absolute right-0 top-0 mr-4 mt-4 pl-2 flex ">
-                <button type="button"
-                        class="rounded-md p-2 bg-slate-200 text-gray-300 shadow-md transition duration-200 ease focus:outline-none hover:ring-4 hover:ring-red-500">
-                    <span class="sr-only">Delete List</span>
-                        <svg width="16" height="16" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="28.5715" y="12.1213" width="154.584" height="23.264" rx="11.632" transform="rotate(45 28.5715 12.1213)"
-                                fill="#FF0000" fill-opacity="0.5"/>
-                            <rect x="28.5715" y="12.1213" width="154.584" height="23.264" rx="11.632" transform="rotate(45 28.5715 12.1213)"
-                                stroke="white" stroke-width="6"/>
-                            <rect x="12.1213" y="121.429" width="154.584" height="23.264" rx="11.632" transform="rotate(-45 12.1213 121.429)"
-                                 fill="#FF0000" fill-opacity="0.5"/>
-                            <rect x="12.1213" y="121.429" width="154.584" height="23.264" rx="11.632" transform="rotate(-45 12.1213 121.429)"
-                                stroke="white" stroke-width="6"/>
+                <h2 class="text-3xl font-bold text-' . substr($list[ "color" ], 3) . '">
+                    <span id="list-title" >' . $list[ "title" ] . '</span>
+                </h2>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="inline-flex items-center justify-center p-0.5 m-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group ' . $list[ "color" ] . ' group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                    <span class="flex-1 whitespace-nowrap w-full text-lg font-bold weight-md relative px-2 py-1.5 transition-all ease-in duration-75 bg-gray-800 bg-opacity-75  rounded-md group-hover:bg-opacity-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 16 16">
+                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                         </svg>
+                    </span>
                 </button>
-            </div>
-        </div>';
+            <!-- Dropdown menu -->
+                <div id="dropdownNavbar" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow-lg border-2 border-dashed border-gray-400 w-44 dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                        <li>
+                            <button onclick="window.list_fold( ' . $list[ "ID" ].' )" class="slide_list flex justify-evenly items-center w-full block px-4 py-4 hover:bg-gray-600 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+                            </svg>
+                                Fold List
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="window.list_edit( \''. $_SESSION['ID'] . '\',\'' . $list[ "ID" ].'\',\''. $list[ "title" ] .'\',\''. $list[ "color" ] .'\' )" class="edit_list flex justify-evenly items-center w-full block px-4 py-4 hover:bg-gray-600 hover:text-white  '. $list[ "disabled" ][1] .'" '. $list[ "disabled" ][0] .'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                            </svg>
+                            Edit   
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="py-1">
+                        <button onclick="window.list_delete( \''. $_SESSION['ID'] . '\',\'' . $list[ "ID" ].'\',\''. $list[ "title" ] .'\' )" class="delete_list flex justify-evenly items-center w-full block px-4 py-2 text-red-400 hover:bg-gray-600  '. $list[ "disabled" ][1] .'" '. $list[ "disabled" ][0] .' >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        Delete
+                        </button>
+                    </div>
+                </div>
+        </div>
+        ';
 
     if ( !empty( $list[ 'tasks' ] ) ) {
-        $list_html .= '<table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50">
+        $list_html .= '<table class="min-w-full mt-1  transition-all" id="list-' . $list[ "ID" ] . '-table">
+            <thead class="bg-gray-700 text-gray-400 transition-all">
             <tr>
                 <th scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-fit">
+                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
+                    Complete
+                </th>
+                <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
                     Title
                 </th>
                 <th scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-fit">
-                    Description
-                </th>
-                <th scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-fit">
+                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
                     Priority
                 </th>
                 <th scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-fit">
+                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
                     Deadline
                 </th>
                 <th scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-fit">
-                    Complete
+                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider w-fit">
+                    Description
                 </th>
                 <th scope="col" class="relative px-6 py-3">
-                    <span class="sr-only">Edit</span>
-                </th>
-                <th scope="col" class="relative px-6 py-3">
-                    <span class="sr-only">Delete</span>
+                    <span class="sr-only">Functions</span>
                 </th>
             </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">';
+            <tbody class="bg-gray-900 text-gray-200 border-1 border-t border-gray-500 transition-all">';
 
         foreach ( $list[ 'tasks' ] as &$task ) {
 
-            if ( $task[ 'is_complete' ] == 1 ) $task[ 'is_complete' ] = 'checked';
-            else $task[ 'is_complete' ] = '';
+            if ( $task[ 'is_complete' ] == 1 ) $task[ 'is_complete_checkbox' ] = 'checked';
+            else $task[ 'is_complete_checkbox' ] = '';
 
             $list_html .= '            
             <tr>
                <input type="hidden" name="id_task" value="' . $task[ 'ID' ] . '" >
-              <td class="task_title px-6 py-4 whitespace-nowrap text-lg max-w-lg overflow-hidden">
+               <td class="px-6 py-4  text-sm">
+                <input ' . $task[ 'is_complete_checkbox' ] . ' onclick="window.task_complete(\'' . $task[ 'ID' ] . '\', \'' . $_SESSION[ "ID" ] . '\', \'' . $task[ 'is_complete' ] . '\' )" type="checkbox" class="complete_task block w-5 h-5 px-4 py-4 mt-2 text-green-600 rounded bg-gray-700 focus:ring-green-500 focus:ring-2 border-gray-600 border-2 hover:border-green-500">
+                
+              </td>
+              <td class="task_title px-6 py-4  text-lg max-w-xs overflow-hidden">
                     ' . $task[ 'title' ] . '
               </td>
-              <td class="task_description px-6 py-4 whitespace-nowrap text-gray-500 max-w-lg overflow-hidden">
-                ' . $task[ 'description' ] . '
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap w-fit">
+              <td class="px-6 py-4  w-fit">
                 <span class="w-6 h-6 px-2 inline-flex text-xs leading-5 font-semibold rounded-full shadow-md ' . $task[ 'priority' ] . ' text-gray-800">
                 </span>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td class="px-6 py-4  text-m">
                 ' . $task[ 'deadline' ] . '
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <input ' . $task[ 'is_complete' ] . ' type="checkbox" class="complete_task block w-5 h-5 px-4 py-4 mt-2 text-xl placeholder-gray-400 bg-green-200 rounded-lg shadow-md focus:outline-none focus:ring-4 focus:ring-green-500 ">
-                
+              <td class="task_description px-6 py-4 max-w-xs overflow-hidden">
+                ' . $task[ 'description' ] . '
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium w-fit">
-                <div class="edit_task flex ">
-                    <button type="button"
-                            class="rounded-md p-2 bg-slate-200 text-gray-300 shadow-md transition duration-200 ease focus:outline-none hover:ring-4 hover:ring-blue-500">
-                    <span class="sr-only">Edit Task</span>
-                    <svg width="24" height="24" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0)">
-                        <rect x="56.1655" y="110.846" width="23.0331" height="127.165" rx="11.5165"
-                            transform="rotate(-135 56.1655 110.846)" fill="#0040FF" fill-opacity="0.5" stroke="white"
-                            stroke-width="6"/>
-                        <path d="M15.4134 131.025L23.4344 101.09C24.1317 98.4879 27.3848 97.6163 29.29 99.5214L51.2038 121.435C53.109 123.34 52.2373 126.594 49.6348 127.291L19.7 135.312C17.0975 136.009 14.716 133.628 15.4134 131.025Z"
-                            fill="#0040FF" fill-opacity="0.5" stroke="white" stroke-width="6"/>
-                        </g>
-                        <defs>
-                        <clipPath id="clip0">
-                            <rect width="150" height="150" fill="white"/>
-                        </clipPath>
-                        </defs>
-                    </svg>
-                </button>
-            </div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium w-fit">
-                <div class="delete_task flex ">
-                    <button type="button"
-                            class="rounded-md p-2 bg-slate-200 text-gray-300 shadow-md transition duration-200 ease focus:outline-none hover:ring-4 hover:ring-red-500">
-                        <span class="sr-only">Delete Task</span>
-                        <svg width="24" height="24" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="28.5715" y="12.1213" width="154.584" height="23.264" rx="11.632" transform="rotate(45 28.5715 12.1213)"
-                                fill="#FF0000" fill-opacity="0.5"/>
-                            <rect x="28.5715" y="12.1213" width="154.584" height="23.264" rx="11.632" transform="rotate(45 28.5715 12.1213)"
-                                stroke="white" stroke-width="6"/>
-                            <rect x="12.1213" y="121.429" width="154.584" height="23.264" rx="11.632" transform="rotate(-45 12.1213 121.429)"
-                                 fill="#FF0000" fill-opacity="0.5"/>
-                            <rect x="12.1213" y="121.429" width="154.584" height="23.264" rx="11.632" transform="rotate(-45 12.1213 121.429)"
-                                stroke="white" stroke-width="6"/>
+              <td class="px-6 py-4  text-right text-sm font-medium w-fit">
+                <div class="flex ">
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar-' . $task[ 'ID' ] . '" class="inline-flex items-center justify-center p-0.5 m-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group ' . $list[ "color" ] . ' group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                    <span class="flex-1 whitespace-nowrap w-full text-lg font-bold weight-md relative px-2 py-1.5 transition-all ease-in duration-75 bg-gray-800 bg-opacity-75  rounded-md group-hover:bg-opacity-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 16 16">
+                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                         </svg>
-                    </button>
+                    </span>
+                </button>
+            <!-- Dropdown menu -->
+                <div id="dropdownNavbar-' . $task[ 'ID' ] . '" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow-lg border-2 border-dashed border-gray-400 w-44 dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                        <li>
+                            <button onclick="window.task_edit( \''. $task[ "ID" ] . '\',\'' . $_SESSION['ID'] . '\',\'' . $task['title'] . '\',\'' . $task['description'] . '\',\'' . $task['deadline'] . '\',\'' . $task['priority'] . '\',\'' . $list['ID'] .'\' )"  class="edit_task flex justify-evenly items-center w-full block px-4 py-4 hover:bg-gray-600 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                            </svg>
+                            Edit   
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="py-1">
+                        <button onclick="window.task_delete( \''. $task[ "ID" ] . '\',\'' . $_SESSION['ID'] . '\',\'' . $task['title'] .'\' )" class="delete_task flex justify-evenly items-center w-full block px-4 py-2 text-red-400 hover:bg-gray-600" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        Delete
+                        </button>
+                    </div>
+                </div>
                 </div>
               </td>
             </tr>';
@@ -191,12 +176,12 @@ if  (isset($list["ID"])) {
 
 
     } else {
-        $list_html .= '<div class="flex flex-col p-6">
+        $list_html .= '<div class="flex flex-col mt-1 p-6 shadow-lg bg-gray-700" id="list-' . $list[ "ID" ] . '-table">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                <div class="p-4 pl-8  bg-white ">
-                                    <h2 class="text-2xl font-bold text-gray-900">
+                            <div class="rounded-lg">
+                                <div class="p-4 pl-8  ">
+                                    <h2 class="text-2xl font-bold text-gray-200">
                                        No Tasks.
                                     </h2>
                                 </div>
@@ -222,6 +207,9 @@ function response( $success, $status, $message, $extra = [] )
 
 $response_data = response( 1, 201, "Lists reloaded", array( "data" => $list_html ) );
 
+header( "Access-Control-Allow-Methods: POST" );
+//header( "Content-Type: application/json; charset=UTF-8" );
 
 echo json_encode( $response_data );
 
+die();

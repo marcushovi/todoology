@@ -11,7 +11,7 @@ $routes = [
     ]
 ];
 
-$routes_with_second_segment = [ 'tovar.php', 'product-view.php' ];
+$routes_with_second_segment = [  ];
 
 $page = segment( 1 );
 $method = $_SERVER[ 'REQUEST_METHOD' ];

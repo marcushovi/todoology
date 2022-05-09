@@ -1,54 +1,49 @@
 <?php
-if ( $_SERVER[ "REQUEST_METHOD" ] != "POST" ) {
+session_start();
+// DATA FORM REQUEST
+$request_data = json_decode( file_get_contents( "php://input" ) );
+
+if ( $_SERVER[ "REQUEST_METHOD" ] != "POST" || $_SESSION['ID'] != $request_data->id_user) {
     die( include "../404.php" );
 }
 
 require_once "../_utilities/Task_List.php";
 $_list = new Task_List();
 
-
-// DATA FORM REQUEST
-$request_data = json_decode( file_get_contents( "php://input" ) );
-
 $lists = $_list->get_lists( $request_data );
 $lists_html = "";
-//$lists_html =$request_data ;
+
+
 if ( $lists ) {
+
+    $lists_html .= '<h2 class="text-white text-2xl font-bold tracking-wider text-left ml-4">Lists</h2>';
 
 
     foreach ( $lists as &$list ) {
 
-        $lists_html .= '<li id="list-' . $list[ "ID" ] . '" class="list" ">
+
+
+        $lists_html .= '<li id="list-' . $list[ "ID" ] . '" class="list" >
                         <input type="hidden" name="id_list" value="' . $list[ "ID" ] . '">
-                        <button onclick="loadList(' . $list[ "ID" ] . ')" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path><path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path></svg>
-                            <span class="flex-1 ml-3 whitespace-nowrap" id="list-title">' . $list[ "title" ] . '</span>
-                            <span id="list-color" class="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-white ' . $list[ "color" ] . ' rounded-full">' . $list[ "number_of_tasks" ] . '</span>
-                            
-
-<button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Dropdown <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
-            <!-- Dropdown menu -->
-            <div id="dropdownNavbar" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-                  <li>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                  </li>
-                </ul>
-                <div class="py-1">
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Sign out</a>
-                </div>
-            </div>
-
-
-                        </button>
+                        <button onclick="window.reload_list(' . $list[ "ID" ] . ').then( r => {
+//                        window.reloadJS();
+                    } );" class="w-full text-left flex items-center p-4 text-base text-white rounded-lg font-medium border-2 border-transparent transition-colors  hover:border-2 hover:border-' . substr($list[ "color" ], 3) . '">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="text-' . substr($list[ "color" ], 3) . '" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                        <span class="flex-1 ml-3 whitespace-nowrap" id="list-title">' . $list[ "title" ] . '</span>
+                            <span class="list-task-number inline-flex justify-center items-center px-3 p-3 h-7 w-7 text-lg font-bold text-gray-800 ' . $list[ "color" ] . ' rounded-full">' . $list[ "number_of_tasks" ] . '</span>
                     </li>';
     }
+
+    $lists_html .= '<li class="pt-6 mt-6 space-y-2 border-t-2 border-gray-400">
+                        <button type="button" onclick="window.list_add( \''. $_SESSION['ID'] . '\',\'' . $list[ "ID" ]  .'\' )" class="w-full relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                                        
+                                                <span class="flex-1 whitespace-nowrap tracking-wider  w-full p-3 text-lg font-bold weight-md relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0" id="list-title">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="inline-block mr-3" viewBox="0 0 16 16">
+                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                        </svg>Add List</span>
+                </buttton></li>';
 }
 
 function response( $success, $status, $message, $extra = [] )
@@ -62,5 +57,9 @@ function response( $success, $status, $message, $extra = [] )
 
 $response_data = response( 1, 201, "Lists reloaded", array( "data" => $lists_html ) );
 
+header( "Access-Control-Allow-Methods: POST" );
+//header( "Content-Type: application/json; charset=UTF-8" );
 
 echo json_encode( $response_data );
+
+die();

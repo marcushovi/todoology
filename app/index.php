@@ -15,18 +15,19 @@ include_once "../app/_partials/header_app.php"
 
 
 
-    <main>
-        <aside class="max-w-md mx-auto ml-3 float-left">
-            <div class="overflow-y-auto py-4 px-3 bg-gray-50 dark:bg-gray-800">
+    <main class="mx-auto mt-12 max-w-7xl flex items-start justify-start flex-nowrap">
+        <aside class="basis-1/5 grow-0 flex-auto">
+            <div class="border-4 border-dashed border-white rounded-lg">
+                <div class="m-4 py-6 px-4 rounded-lg bg-gray-800">
+                    <ul id="list_menu" class="space-y-2">
 
-                <ul id="list_menu" class="space-y-2 w-64">
-
-                </ul>
+                    </ul>
+                </div>
             </div>
         </aside>
-        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-            <div class="px-4 py-6 sm:px-0">
-                <div class="border-4 border-dashed border-gray-400 rounded-lg h-96 h-auto inline-block min-w-full"
+        <div class="basis-4/5 shrink grow-0 sm:px-6 lg:px-8">
+            <div>
+                <div class="h-96 h-auto inline-block min-w-full"
                      id="list-container">
 
 

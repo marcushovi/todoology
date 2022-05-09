@@ -24,4 +24,3 @@ $alert = new Alert();
 
 session_start();
 
-?>

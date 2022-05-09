@@ -58,7 +58,7 @@ class Task_List extends Task
 
         $id_user = $this->escape_string( $data->id_user );
 // get all complete tasks sorted by time when were uploaded ,also check user ID
-        $query = "SELECT ID, title, color FROM lists WHERE id_user = '$id_user' OR id_user = '-1' ORDER BY created_at DESC ;";
+        $query = "SELECT ID, title, color FROM lists WHERE id_user = '$id_user' OR id_user = '-1' ORDER BY ID ASC ;";
 
         $result_lists = $this->get_data( $query );
 
@@ -90,7 +90,7 @@ class Task_List extends Task
         $id_list = $this->escape_string( $data->id_list );
 
 // get all complete tasks sorted by time when were uploaded ,also check user ID
-        if  ($id_list == "-1") {
+        if  (intval($id_list) < 0) {
             $query = "SELECT ID, title, color FROM lists WHERE ID = '$id_list';";
         }
         else {
