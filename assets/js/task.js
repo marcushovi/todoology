@@ -85,10 +85,7 @@ window.task_add = function () {
                 $( "body" ).append( response.message );
                 if ( response.success === 1 ) {
                     setTimeout( function () {
-                        window.reload_page(task_list_id).then( r => {
-                            window.reloadJS();
-                        } );
-
+                        window.reload_page(task_list_id);
                     }, 500 );
                 }
             }
@@ -149,9 +146,7 @@ window.task_edit = function ( id_task, id_user, title_field, desc_field, datetim
                 $( "body" ).append( response.message );
                 if ( response.success === 1 ) {
                     setTimeout( function () {
-                        window.reload_page(task_list_id).then( r => {
-                            window.reloadJS();
-                        } );
+                        window.reload_page(task_list_id);
 
                     }, 500 );
                 }
@@ -196,9 +191,7 @@ window.task_delete = function ( id_task, id_user, title ) {
                 $( "body" ).append( response.message );
                 if ( response.success === 1 ) {
                     setTimeout( function () {
-                        window.reload_page(task_list_id).then( r => {
-                            window.reloadJS();
-                        } );
+                        window.reload_page(task_list_id);
 
                     }, 500 );
                 }
@@ -247,9 +240,7 @@ window.task_complete = function ( id_task, id_user, is_complete ) {
             $( "body" ).append( response.message );
             if ( response.success === 1 ) {
                 setTimeout( function () {
-                    window.reload_page(task_list_id).then( r => {
-                        window.reloadJS();
-                    } );
+                    window.reload_page(task_list_id);
 
                 }, 500 );
             }

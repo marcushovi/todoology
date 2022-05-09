@@ -31,7 +31,7 @@ if ( isset( $_POST[ "email" ] ) && isset( $_POST[ "password" ] ) ) {
     $error[ 'password' ] = $validation->validate_password( $password, $password );
 
     // if validation is correct
-    if ( $error[ 'email' ] === true && $error[ 'password' ] === true ) {
+    if ( $error[ 'email' ] == true && $error[ 'password' ] == true ) {
 
         // get data of user from DB by mail
 
@@ -81,9 +81,10 @@ if ( isset( $_POST[ "email" ] ) && isset( $_POST[ "password" ] ) ) {
 
     <section class="w-full bg-gray-800">
 
-        <div class="max-w-7xl">
+        <div>
             <div class="flex flex-col h-screen w-screen lg:flex-row ">
                 <div class="relative w-full bg-cover lg:w-6/12 xl:w-7/12 bg-gradient-to-r from-violet-600  to-blue-500">
+                    <p class="absolute left-8 top-2 z-10 text-lg text-right text-gray-300 m-3 ">Back to <a href="<?= asset( "", BASE_URL ) ?>" class="text-gray-800 underline">Home</a></p>
                     <div class="relative flex flex-col items-center justify-center w-full h-full px-10 my-20 lg:px-16 lg:my-0">
                         <div class="flex flex-col items-start space-y-8 tracking-tight mb-16 lg:max-w-3xl">
                             <div class="relative">
@@ -98,6 +99,8 @@ if ( isset( $_POST[ "email" ] ) && isset( $_POST[ "password" ] ) ) {
                 </div>
 
                 <div class="w-full bg-gray-800 lg:w-6/12 xl:w-5/12">
+
+
                     <div class="flex flex-col items-center justify-center w-full h-full p-10 lg:p-16 xl:p-24">
                         <div class="w-full flex justify-center">
                             <a href="<?= BASE_URL ?>" target="_self">
@@ -131,8 +134,7 @@ if ( isset( $_POST[ "email" ] ) && isset( $_POST[ "password" ] ) ) {
                                         </span>
                                 </button>
                                 <p class="text-lg text-gray-300 m-3 ">or, if you don't have an account you can <a
-                                            href="<?= asset( "signup", BASE_URL ) ?>" class="text-blue-600 underline">sign
-                                        up</a></p>
+                                            href="<?= asset( "signup", BASE_URL ) ?>" class="text-blue-600 underline">Sign up</a></p>
                             </div>
 
                         </form>

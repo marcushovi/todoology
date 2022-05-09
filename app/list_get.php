@@ -41,7 +41,7 @@ if  (isset($list["ID"])) {
                     </span>
                 </button>
             <!-- Dropdown menu -->
-                <div id="dropdownNavbar" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow-lg border-2 border-dashed border-gray-400 w-44 dark:bg-gray-700 dark:divide-gray-600">
+                <div id="dropdownNavbar" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow-lg border-2 border-gray-400 w-44 dark:bg-gray-700 dark:divide-gray-600">
                     <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                         <li>
                             <button onclick="window.list_fold( ' . $list[ "ID" ].' )" class="slide_list flex justify-evenly items-center w-full block px-4 py-4 hover:bg-gray-600 hover:text-white">
@@ -139,7 +139,7 @@ if  (isset($list["ID"])) {
                     </span>
                 </button>
             <!-- Dropdown menu -->
-                <div id="dropdownNavbar-' . $task[ 'ID' ] . '" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow-lg border-2 border-dashed border-gray-400 w-44 dark:bg-gray-700 dark:divide-gray-600">
+                <div id="dropdownNavbar-' . $task[ 'ID' ] . '" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow-lg border-2 border-gray-400 w-44 dark:bg-gray-700 dark:divide-gray-600">
                     <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                         <li>
                             <button onclick="window.task_edit( \''. $task[ "ID" ] . '\',\'' . $_SESSION['ID'] . '\',\'' . $task['title'] . '\',\'' . $task['description'] . '\',\'' . $task['deadline'] . '\',\'' . $task['priority'] . '\',\'' . $list['ID'] .'\' )"  class="edit_task flex justify-evenly items-center w-full block px-4 py-4 hover:bg-gray-600 hover:text-white">

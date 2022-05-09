@@ -18,12 +18,12 @@ class Task_List extends Task
     public function create_list( $data )
     {
         if ( empty( $data->id_user ) ) {
-            return $this->response( 0, 422, "Something went wrong!" );
+            return $this->response( 0, 422, "We are missing some credentials! Please contact server admin." );
         }
 
         if ( !isset( $data->title ) || !isset( $data->color ) || empty( trim( $data->title ) ) || empty( trim( $data->color ) ) ) {
 
-            return $this->response( 0, 422, "Please fill in all fields!" );
+            return $this->response( 0, 422, "Please fill in all required fields!" );
         } else {
 
             $id_user = $this->escape_string( $data->id_user );
@@ -42,7 +42,7 @@ class Task_List extends Task
                     return $this->response( 1, 201, " The list '$title' was created successfully!" );
 
                 } else {
-                    return $this->response( 0, 500, "Sorry, there was a problem connecting to the server." );
+                    return $this->response( 0, 500, "Sorry, there was a problem connecting to the server. Please contact server admin." );
                 }
             } else {
                 return $this->response( 0, 422, $is_valid );
@@ -53,7 +53,7 @@ class Task_List extends Task
     public function get_lists( $data )
     {
         if ( empty( $data->id_user ) ) {
-            return $this->response( 0, 422, "Something went wrong!" );
+            return $this->response( 0, 422, "We are missing some credentials! Please contact server admin." );
         }
 
         $id_user = $this->escape_string( $data->id_user );
@@ -83,7 +83,7 @@ class Task_List extends Task
     public function get_list( $data )
     {
         if ( empty( $data->id_user ) || empty( $data->id_list ) ) {
-            return $this->response( 0, 422, "Something went wrong!" );
+            return $this->response( 0, 422, "We are missing some credentials! Please contact server admin." );
         }
 
         $id_user = $this->escape_string( $data->id_user );
@@ -121,7 +121,7 @@ class Task_List extends Task
     public function delete_list( $data )
     {
         if ( empty( $data->id_user ) || empty( $data->id_list ) ) {
-            return $this->response( 0, 422, "Something went wrong!" );
+            return $this->response( 0, 422, "We are missing some credentials! Please contact server admin." );
         }
 
         $id_user = $this->escape_string( $data->id_user );
@@ -135,9 +135,9 @@ class Task_List extends Task
 
         if ( $result_list === TRUE && $result_task === TRUE ) {
 
-            return $this->response( 1, 201, "The list was deleted successfully " );
+            return $this->response( 1, 201, "The list was deleted successfully!" );
         } else {
-            return $this->response( 0, 500, "Something went wrong" );
+            return $this->response( 0, 500, "Sorry, there was a problem connecting to the server. Please contact server admin." );
         }
 
     }
@@ -145,7 +145,7 @@ class Task_List extends Task
     public function edit_list( $data )
     {
         if ( empty( $data->id_user) || empty( $data->id_list ) ) {
-            return $this->response( 0, 422, "Something went wrong!" );
+            return $this->response( 0, 422, "We are missing some credentials! Please contact server admin." );
         }
 
         if ( !isset( $data->title ) || !isset( $data->color ) || empty( trim( $data->title ) ) || empty( trim( $data->color ) ) ) {
@@ -170,7 +170,7 @@ class Task_List extends Task
                     return $this->response( 1, 201, "List '$title' was successfully edited" );
 
                 } else {
-                    return $this->response( 0, 500, "Sorry, there was a problem connecting to the server." );
+                    return $this->response( 0, 500, "Sorry, there was a problem connecting to the server. Please contact server admin." );
                 }
             } else {
                 return $this->response( 0, 422, $is_valid );

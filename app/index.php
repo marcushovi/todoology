@@ -17,9 +17,9 @@ include_once "../app/_partials/header_app.php"
 
     <main class="mx-auto mt-12 mb-36 max-w-7xl flex items-start content-evenly justify-evenly gap-5 flex-wrap lg:flex-nowrap">
         <aside class="basis-1/5 grow-0 flex-auto">
-            <div class="border-4 border-dashed border-white rounded-lg">
-                <div class="m-4 py-6 px-4 rounded-lg bg-gray-800">
-                    <ul id="list_menu" class="space-y-2">
+            <div class="border-4 border-white border-dashed rounded-lg bg-gray-800">
+                <div class="m-4 py-2 px-4 rounded-lg">
+                    <ul id="list_menu" class="space-y-4">
 
                     </ul>
                 </div>
