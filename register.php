@@ -61,7 +61,7 @@ if ( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "
         // get data of other users and check if mail already exists
 
 
-        $query = "SELECT email FROM user WHERE email = '$email'";
+        $query = "SELECT email FROM users WHERE email = '$email'";
 
         $result = $crud->get_data( $query );
 
@@ -72,7 +72,7 @@ if ( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "
             $hashed_password = hash( "sha256", $password );
 
 
-            $query = "INSERT INTO user (name, email, password, created_at) VALUES ('$name', '$email', '$hashed_password',NOW())";
+            $query = "INSERT INTO users (name, email, password, created_at) VALUES ('$name', '$email', '$hashed_password',NOW())";
 
             $result = $crud->execute( $query );
 
@@ -112,8 +112,8 @@ if ( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "
     <section class="w-full bg-gray-800">
 
         <div class="max-w-7xl">
-            <div class="flex flex-col h-screen w-screen lg:flex-row ">
-                <div class="relative w-full bg-cover flex-wrap grow shrink lg:w-6/12 xl:w-7/12 bg-gradient-to-r from-violet-600  to-blue-500">
+            <div class="w-full flex flex-col items-around lg:flex-row ">
+                <div class="w-full bg-cover flex-wrap grow shrink lg:basis-6/12 xl:basis-7/12 bg-gradient-to-r from-violet-600  to-blue-500">
                     <div class="relative flex flex-col items-center justify-center w-full h-full px-10 my-20 lg:px-16 lg:my-0">
                         <div class="flex flex-col items-start space-y-8 tracking-tight mb-16 lg:max-w-3xl">
                             <div class="relative">
@@ -125,8 +125,8 @@ if ( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "
                         </div>
                     </div>
                 </div>
-                <div class="w-full bg-gray-800 flex-wrap grow lg:w-6/12 xl:w-5/12">
-                    <div class="flex flex-col items-center justify-center w-full h-full p-10 lg:p-16 xl:p-24">
+                <div class="w-full bg-gray-800 flex-wrap grow shrink lg:basis-6/12 xl:basis-6/12">
+                    <div class="flex flex-col items-center justify-center w-full p-10 lg:p-16 xl:p-24">
                         <div class="w-full flex justify-center">
                             <a href="<?= BASE_URL ?>" target="_self">
                                 <img src="<?= asset( '/img/logo-full.svg' ) ?>"

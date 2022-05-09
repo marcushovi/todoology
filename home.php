@@ -57,11 +57,11 @@ include_once "_partials/header.php";
                         </h1>
                         <p class="mt-3 text-base text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
                         <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                            <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-xl font-bold text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                            <a href="#pricing" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-xl font-bold text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                                 <span class="relative px-8 py-4 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                         Get Started
                                 </span>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </main>
@@ -71,10 +71,8 @@ include_once "_partials/header.php";
             <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="">
         </div>
     </div>
-
-    <!-- This example requires Tailwind CSS v2.0+ -->
     <div id="about" class="py-12 bg-gray-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:text-center">
                 <h2  class="text-base text-blue-600 font-semibold tracking-wide uppercase">TIME</h2>
                 <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-200 sm:text-4xl">A better way to manage time</p>
@@ -215,7 +213,7 @@ include_once "_partials/header.php";
             <div class="py-8 px-6 text-center bg-gray-50 dark:bg-gray-700 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12">
                 <div class="mt-4 flex items-center justify-center text-5xl leading-none font-extrabold text-gray-900 dark:text-white">
                 <span>
-                    $5/mo
+                    $5/mon
                 </span>
                 </div>
                 <p class="mt-4 text-sm leading-5">
@@ -223,14 +221,14 @@ include_once "_partials/header.php";
                     Card payments:
                 </span>
                     <span class=" inline-block font-medium text-gray-500 dark:text-gray-400">
-                    2.9% + 20p per transaction
+                    3% + 20p per transaction
                 </span>
                 </p>
                 <div class="mt-6">
                     <div class="rounded-md ">
-                        <button type="button" class="mr-4 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-6 py-4 text-center">
-                            Create your store
-                        </button>
+                        <a href="<?= asset( "signup", BASE_URL ) ?>" class="mr-4 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-6 py-4 text-center">
+                            Manage your time!
+                        </a>
                     </div>
                 </div>
             </div>

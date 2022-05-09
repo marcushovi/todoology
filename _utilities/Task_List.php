@@ -17,7 +17,7 @@ class Task_List extends Task
 
     public function create_list( $data )
     {
-        if ( !isset( $data->id_user ) || empty( $data->id_user ) ) {
+        if ( empty( $data->id_user ) ) {
             return $this->response( 0, 422, "Something went wrong!" );
         }
 
@@ -52,13 +52,13 @@ class Task_List extends Task
 
     public function get_lists( $data )
     {
-        if ( !isset( $data->id_user ) || empty( $data->id_user ) ) {
+        if ( empty( $data->id_user ) ) {
             return $this->response( 0, 422, "Something went wrong!" );
         }
 
         $id_user = $this->escape_string( $data->id_user );
 // get all complete tasks sorted by time when were uploaded ,also check user ID
-        $query = "SELECT ID, title, color FROM lists WHERE id_user = '$id_user' OR id_user = '-1' ORDER BY ID ASC ;";
+        $query = "SELECT ID, title, color FROM lists WHERE id_user = '$id_user' OR id_user <= 3 ORDER BY ID ASC ;";
 
         $result_lists = $this->get_data( $query );
 
@@ -82,7 +82,7 @@ class Task_List extends Task
 
     public function get_list( $data )
     {
-        if ( !isset( $data->id_user ) || empty( $data->id_user ) || !isset( $data->id_list ) || empty( $data->id_list ) ) {
+        if ( empty( $data->id_user ) || empty( $data->id_list ) ) {
             return $this->response( 0, 422, "Something went wrong!" );
         }
 
@@ -120,7 +120,7 @@ class Task_List extends Task
 
     public function delete_list( $data )
     {
-        if ( !isset( $data->id_user ) || empty( $data->id_user ) || !isset( $data->id_list ) || empty( $data->id_list ) ) {
+        if ( empty( $data->id_user ) || empty( $data->id_list ) ) {
             return $this->response( 0, 422, "Something went wrong!" );
         }
 
@@ -144,7 +144,7 @@ class Task_List extends Task
 
     public function edit_list( $data )
     {
-        if ( !isset( $data->id_user ) || empty( $data->id_user || !isset( $data->id_list ) || empty( $data->id_list ) ) ) {
+        if ( empty( $data->id_user) || empty( $data->id_list ) ) {
             return $this->response( 0, 422, "Something went wrong!" );
         }
 
