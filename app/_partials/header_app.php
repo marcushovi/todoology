@@ -58,14 +58,14 @@
         </div>
     </nav>
 
-    <button onclick="window.task_add()" type="button"
-            class="z-50 p-0.5 fixed bottom-96 right-44 flex items-center justify-center  overflow-hidden text-sm font-medium text-gray-900 rounded-xl group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-        <span class="rounded-xl w-full p-3 text-lg text-center font-bold weight-md transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0" id="list-title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-            </svg>
-        </span>
-    </button>
+<!--    <button onclick="window.task_add()" type="button"-->
+<!--            class="z-50 p-0.5 fixed right-4 bottom-76 sm:right-20 sm:bottom-96 md:right-44 flex items-center justify-center  overflow-hidden text-sm font-medium text-gray-900 rounded-xl group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">-->
+<!--        <span class="rounded-xl w-full p-3 text-lg text-center font-bold weight-md transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0" id="list-title">-->
+<!--            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16">-->
+<!--                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>-->
+<!--            </svg>-->
+<!--        </span>-->
+<!--    </button>-->
 
 
     <header class="bg-gradient-to-br from-purple-600 to-blue-500 shadow ">
