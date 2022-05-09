@@ -17,13 +17,13 @@ class Task_List extends Task
 
     public function create_list( $data )
     {
-        if ( empty( $data->id_user ) ) {
-            return $this->response( 0, 422, "We are missing some credentials! Please contact server admin." );
+        if ( !isset( $data->id_user ) || empty( $data->id_user ) ) {
+            return $this->response( 0, 422, "We have a problem on the server side. Please contact the admin server." );
         }
 
         if ( !isset( $data->title ) || !isset( $data->color ) || empty( trim( $data->title ) ) || empty( trim( $data->color ) ) ) {
 
-            return $this->response( 0, 422, "Please fill in all required fields!" );
+            return $this->response( 0, 422, "Please fill in all fields!" );
         } else {
 
             $id_user = $this->escape_string( $data->id_user );
@@ -42,7 +42,7 @@ class Task_List extends Task
                     return $this->response( 1, 201, " The list '$title' was created successfully!" );
 
                 } else {
-                    return $this->response( 0, 500, "Sorry, there was a problem connecting to the server. Please contact server admin." );
+                    return $this->response( 0, 500, "Sorry, there was a problem connecting to the server." );
                 }
             } else {
                 return $this->response( 0, 422, $is_valid );
@@ -52,13 +52,13 @@ class Task_List extends Task
 
     public function get_lists( $data )
     {
-        if ( empty( $data->id_user ) ) {
-            return $this->response( 0, 422, "We are missing some credentials! Please contact server admin." );
+        if ( !isset( $data->id_user ) || empty( $data->id_user ) ) {
+            return $this->response( 0, 422, "We have a problem on the server side. Please contact the admin server." );
         }
 
         $id_user = $this->escape_string( $data->id_user );
 // get all complete tasks sorted by time when were uploaded ,also check user ID
-        $query = "SELECT ID, title, color FROM lists WHERE id_user = '$id_user' OR id_user <= 3 ORDER BY ID ASC ;";
+        $query = "SELECT ID, title, color FROM lists WHERE id_user = '$id_user' OR ID < 0 ORDER BY ID ASC ;";
 
         $result_lists = $this->get_data( $query );
 
@@ -82,8 +82,8 @@ class Task_List extends Task
 
     public function get_list( $data )
     {
-        if ( empty( $data->id_user ) || empty( $data->id_list ) ) {
-            return $this->response( 0, 422, "We are missing some credentials! Please contact server admin." );
+        if ( !isset( $data->id_user ) || empty( $data->id_user ) || !isset( $data->id_list ) || empty( $data->id_list ) ) {
+            return $this->response( 0, 422, "We have a problem on the server side. Please contact the admin server." );
         }
 
         $id_user = $this->escape_string( $data->id_user );
@@ -100,16 +100,29 @@ class Task_List extends Task
 
         $result_list = $this->get_data( $query );
 
-
+        $result_list = $result_list[0];
         if ( !empty($result_list) ) {
-            $result_list = $result_list[0];
-                $result_tasks = $this->get_tasks( $id_user, $id_list );
 
-                if ( $result_tasks && count( $result_tasks ) > 0 ) {
-                    $result_list[ "tasks" ] = $result_tasks;
-                } else {
-                    $result_list[ "tasks" ] = [];
-                }
+            $date = false;
+
+
+            switch ( intval($id_list) ){
+                case -2:
+                    $date = " DATE(deadline) = DATE(NOW()) ";
+                    break;
+                case -3:
+                    $date = " DATEDIFF(deadline, CURDATE()) = 1 ";
+                    break;
+            }
+
+
+            $result_tasks = $this->get_tasks( $id_user, $id_list, $date );
+
+            if ( $result_tasks && count( $result_tasks ) > 0 ) {
+                $result_list[ "tasks" ] = $result_tasks;
+            } else {
+                $result_list[ "tasks" ] = [];
+            }
 
             return $result_list;
         } else
@@ -120,8 +133,8 @@ class Task_List extends Task
 
     public function delete_list( $data )
     {
-        if ( empty( $data->id_user ) || empty( $data->id_list ) ) {
-            return $this->response( 0, 422, "We are missing some credentials! Please contact server admin." );
+        if ( !isset( $data->id_user ) || empty( $data->id_user ) || !isset( $data->id_list ) || empty( $data->id_list ) ) {
+            return $this->response( 0, 422, "We have a problem on the server side. Please contact the admin server." );
         }
 
         $id_user = $this->escape_string( $data->id_user );
@@ -135,17 +148,17 @@ class Task_List extends Task
 
         if ( $result_list === TRUE && $result_task === TRUE ) {
 
-            return $this->response( 1, 201, "The list was deleted successfully!" );
+            return $this->response( 1, 201, "The list was deleted successfully " );
         } else {
-            return $this->response( 0, 500, "Sorry, there was a problem connecting to the server. Please contact server admin." );
+            return $this->response( 0, 500, "We have a problem on the server side. Please contact the admin server." );
         }
 
     }
 
     public function edit_list( $data )
     {
-        if ( empty( $data->id_user) || empty( $data->id_list ) ) {
-            return $this->response( 0, 422, "We are missing some credentials! Please contact server admin." );
+        if ( !isset( $data->id_user ) || empty( $data->id_user || !isset( $data->id_list ) || empty( $data->id_list ) ) ) {
+            return $this->response( 0, 422, "We have a problem on the server side. Please contact the admin server." );
         }
 
         if ( !isset( $data->title ) || !isset( $data->color ) || empty( trim( $data->title ) ) || empty( trim( $data->color ) ) ) {
@@ -170,7 +183,7 @@ class Task_List extends Task
                     return $this->response( 1, 201, "List '$title' was successfully edited" );
 
                 } else {
-                    return $this->response( 0, 500, "Sorry, there was a problem connecting to the server. Please contact server admin." );
+                    return $this->response( 0, 500, "Sorry, there was a problem connecting to the server." );
                 }
             } else {
                 return $this->response( 0, 422, $is_valid );

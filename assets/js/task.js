@@ -14,10 +14,13 @@ function prepare_form_task( title, button, titleField, textarea, datetime_field,
         const list_id = $( this ).find( "input[name='id_list']" ).val();
         const list_name = $( this ).find( "#list-title" ).text();
 
-        lists.append( $( '<option>', {
-            value: list_id,
-            text: list_name,
-        } ) );
+        if (parseInt(list_id) > -2){
+            lists.append( $( '<option>', {
+                value: list_id,
+                text: list_name,
+            } ) );
+        }
+
     } );
     lists.val( id_list_field );
 
@@ -44,7 +47,7 @@ window.task_add = function () {
     let currentTime = "0" + now.getHours() + ':' + now.getMinutes();
     let currentDate = now.getFullYear() + "-" + (month) + "-" + (day);
 
-    prepare_form_task( "New Task", "Create", "", "", currentDate + " " + currentTime, "bg-green-400", "-2" );
+    prepare_form_task( "New Task", "Create", "", "", currentDate + " " + currentTime, "bg-green-400", "-1" );
 
     $( "#add_task_button" ).off().click( function () {
 

@@ -13,5 +13,6 @@
 <script src="<?= asset( 'js/_init.js' ) ?>"></script>
 <script src="<?= asset( 'js/list.js' ) ?>"></script>
 <script src="<?= asset( 'js/task.js' ) ?>"></script>
+<script src="<?= asset( 'js/confetties.js' ) ?>" defer></script>
 </body>
 </html>

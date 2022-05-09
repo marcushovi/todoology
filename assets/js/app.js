@@ -15,7 +15,7 @@ window.reloadJS = function () {
 
 }
 
-window.load_list = function ( id_list = "-1" ) {
+window.load_list = function ( id_list = "-2" ) {
 
     const id_user = $( "input[name='id_user']" ).val();
 
@@ -77,7 +77,7 @@ window.status_delete = function () {
         $( ".status" ).parent().fadeOut( 1000, function () {
             $( this ).remove();
         } );
-    }, 2500 );
+    }, 3000 );
 }
 
 
