@@ -13,11 +13,11 @@ function prepare_form_list( title, button, titleField, color ) {
 
 
 // if you click "Add List"  button
-window.list_fold = function ( id_list ) {
-
-    $( "#list-" + id_list + "-table" ).slideToggle( "Slow" );
-
-}
+// window.list_fold = function ( id_list ) {
+//
+//     $( "#list-" + id_list + "-table" ).slideToggle( "Slow" );
+//
+// }
 
 
 // if you click "Add List"  button
@@ -100,7 +100,7 @@ window.list_edit = function ( id_user, id_list, title, color ) {
                 $( "body" ).append( response.message );
 
                 if ( response.success === 1 ) {
-                    window.reload_page();
+                    window.reload_page(id_list);
                 }
             }
 

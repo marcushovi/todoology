@@ -32,8 +32,10 @@ if  (isset($list["ID"])) {
             
                 <h2 class="text-3xl font-bold text-' . substr($list[ "color" ], 3) . '">
                     <span id="list-title" >' . $list[ "title" ] . '</span>
-                </h2>
-                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="inline-flex items-center justify-center p-0.5 m-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group ' . $list[ "color" ] . ' group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                </h2>';
+
+    if  ($list['ID'] >= 0 ) {
+        $list_html .= '                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="inline-flex items-center justify-center p-0.5 m-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group ' . $list[ "color" ] . ' group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                     <span class="flex-1 whitespace-nowrap w-full text-lg font-bold weight-md relative px-2 py-1.5 transition-all ease-in duration-75 bg-gray-800 bg-opacity-75  rounded-md group-hover:bg-opacity-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 16 16">
                             <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
@@ -41,16 +43,8 @@ if  (isset($list["ID"])) {
                     </span>
                 </button>
             <!-- Dropdown menu -->
-                <div id="dropdownNavbar" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow-lg border-2 border-gray-400 w-44 dark:bg-gray-700 dark:divide-gray-600">
+                <div id="dropdownNavbar" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow-lg border-2 border-' . substr($list[ "color" ], 3) . ' w-44 dark:bg-gray-700 dark:divide-gray-600">
                     <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-                        <li>
-                            <button onclick="window.list_fold( ' . $list[ "ID" ].' )" class="slide_list flex justify-evenly items-center w-full block px-4 py-4 hover:bg-gray-600 hover:text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
-                            </svg>
-                                Fold List
-                            </button>
-                        </li>
                         <li>
                             <button onclick="window.list_edit( \''. $_SESSION['ID'] . '\',\'' . $list[ "ID" ].'\',\''. $list[ "title" ] .'\',\''. $list[ "color" ] .'\' )" class="edit_list flex justify-evenly items-center w-full block px-4 py-4 hover:bg-gray-600 hover:text-white  '. $list[ "disabled" ][1] .'" '. $list[ "disabled" ][0] .'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -69,9 +63,10 @@ if  (isset($list["ID"])) {
                         Delete
                         </button>
                     </div>
-                </div>
-        </div>
-        ';
+                </div>';
+    }
+
+    $list_html .= '</div>';
 
     if ( !empty( $list[ 'tasks' ] ) ) {
         $list_html .= '<table class="min-w-full mt-1  mb-44 md:mb-0  transition-all" id="list-' . $list[ "ID" ] . '-table">
@@ -109,11 +104,15 @@ if  (isset($list["ID"])) {
             if ( $task[ 'is_complete' ] == 1 ) $task[ 'is_complete_checkbox' ] = 'checked';
             else $task[ 'is_complete_checkbox' ] = '';
 
+
+            if ( $task[ 'is_complete' ] == 1 ) $task[ 'is_complete_confetti' ] = '';
+            else $task[ 'is_complete_confetti' ] = 'window.confetti();';
+
             $list_html .= '            
             <tr>
                <input type="hidden" name="id_task" value="' . $task[ 'ID' ] . '" >
                <td class=" md:px-6 md:py-4  text-xs md:text-m">
-                <input ' . $task[ 'is_complete_checkbox' ] . ' onclick="window.task_complete(\'' . $task[ 'ID' ] . '\', \'' . $_SESSION[ "ID" ] . '\', \'' . $task[ 'is_complete' ] . '\' )" type="checkbox" class="complete_task mx-auto block w-5 h-5 px-2 py-2 md:px-4 md:py-4 mt-2 text-green-600 rounded bg-gray-700 focus:ring-green-500 focus:ring-2 border-gray-600 border-2 hover:border-green-500">
+                <input ' . $task[ 'is_complete_checkbox' ] . ' onclick="' . $task[ 'is_complete_confetti' ] . ' window.task_complete(\'' . $task[ 'ID' ] . '\', \'' . $_SESSION[ "ID" ] . '\', \'' . $task[ 'is_complete' ] . '\' )" type="checkbox" class="complete_task mx-auto block w-5 h-5 px-2 py-2 md:px-4 md:py-4 mt-2 text-green-600 rounded bg-gray-700 focus:ring-green-500 focus:ring-2 border-gray-600 border-2 hover:border-green-500">
                 
               </td>
               <td class="task_title md:px-6 md:py-4 text-xs md:text-lg max-w-xs overflow-hidden">
@@ -123,7 +122,7 @@ if  (isset($list["ID"])) {
                 <span class="w-6 h-6 px-2  inline-flex text-xs leading-5 font-semibold rounded-full shadow-md ' . $task[ 'priority' ] . ' text-gray-800">
                 </span>
               </td>
-              <td class="md:px-6 md:py-4  text-xs md:text-m">
+              <td class="md:px-6 md:py-4  text-xs md:text-sm">
                 ' . $task[ 'deadline' ] . '
               </td>
               <td class="task_description px-6 py-4 max-w-xs overflow-hidden hidden md:block">
@@ -182,7 +181,7 @@ if  (isset($list["ID"])) {
                             <div class="rounded-lg">
                                 <div class="p-4 pl-8  ">
                                     <h2 class="text-2xl font-bold text-gray-200">
-                                       No Tasks.
+                                       No Tasks yet.
                                     </h2>
                                 </div>
                             </div>

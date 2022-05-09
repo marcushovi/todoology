@@ -32,7 +32,7 @@ include_once "_partials/header.php";
                         <div class="hidden w-full md:block md:w-auto " id="mobile-menu">
                             <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium ">
                                 <li>
-                                    <a href="<?= asset( "", BASE_URL ) ?>" class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
+                                    <a href="<?= asset( "", BASE_URL ) ?>" class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
                                 </li>
                                 <li>
                                     <a href="#pricing" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
@@ -55,7 +55,7 @@ include_once "_partials/header.php";
                             <span class="block xl:inline">App to enrich your</span>
                             <span class="block text-blue-600 xl:inline">Time Management</span>
                         </h1>
-                        <p class="mt-3 text-base text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
+                        <p class="mt-3 text-base text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Time, the only non-repurchase asset on the planet.</p>
                         <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                             <a href="#pricing" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-xl font-bold text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                                 <span class="relative px-8 py-4 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
@@ -213,7 +213,7 @@ include_once "_partials/header.php";
             <div class="py-8 px-6 text-center bg-gray-50 dark:bg-gray-700 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12">
                 <div class="mt-4 flex items-center justify-center text-5xl leading-none font-extrabold text-gray-900 dark:text-white">
                 <span>
-                    $5/mon
+                    €5/mon
                 </span>
                 </div>
                 <p class="mt-4 text-sm leading-5">
@@ -221,12 +221,12 @@ include_once "_partials/header.php";
                     Card payments:
                 </span>
                     <span class=" inline-block font-medium text-gray-500 dark:text-gray-400">
-                    3% + 20p per transaction
+                    3% per transaction
                 </span>
                 </p>
                 <div class="mt-6">
                     <div class="rounded-md ">
-                        <a href="<?= asset( "signup", BASE_URL ) ?>" class="mr-4 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-6 py-4 text-center">
+                        <a href="<?= asset( "signup", BASE_URL ) ?>" class="mr-4 text-white text-lg font-bold bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-6 py-4 text-center">
                             Manage your time!
                         </a>
                     </div>

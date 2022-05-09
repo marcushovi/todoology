@@ -10,17 +10,22 @@ class Task extends Crud
         parent::__construct();
     }
 
-    public function get_tasks( $id_user, $id_list )
+    public function get_tasks( $id_user, $id_list, $date )
     {
         if ( !isset( $id_user ) || empty( $id_user ) || !isset( $id_list ) || empty( $id_list ) ) {
-            return $this->response( 0, 422, "Something went wrong!" );
+            return $this->response( 0, 422, "We have a problem on the server side. Please contact the admin server." );
         }
 
         $id_user = $this->escape_string( $id_user );
         $id_list = $this->escape_string( $id_list );
         // get all complete tasks sorted by time when were uploaded ,also check user ID
 
-        $query = "SELECT ID, id_list, title, description, deadline, priority, is_complete FROM tasks WHERE id_user = '$id_user' AND id_list = '$id_list' ORDER BY is_complete ASC ;";
+        if ( $date ) {
+            $query = "SELECT ID, id_list, title, description, deadline, priority, is_complete FROM tasks WHERE id_user = '$id_user' AND  " . $date . "  ORDER BY is_complete ASC ;";
+        }
+        else {
+            $query = "SELECT ID, id_list, title, description, deadline, priority, is_complete FROM tasks WHERE id_user = '$id_user' AND id_list = '$id_list' ORDER BY is_complete ASC ;";
+        }
 
         $result = $this->get_data( $query );
 
@@ -33,14 +38,33 @@ class Task extends Crud
     public function get_tasks_number( $id_user, $id_list )
     {
         if ( !isset( $id_user ) || empty( $id_user ) || !isset( $id_list ) || empty( $id_list ) ) {
-            return $this->response( 0, 422, "Something went wrong!" );
+            return $this->response( 0, 422, "We have a problem on the server side. Please contact the admin server." );
         }
 
         $id_user = $this->escape_string( $id_user );
         $id_list = $this->escape_string( $id_list );
         // get all complete tasks sorted by time when were uploaded ,also check user ID
 
-        $query = "SELECT COUNT(ID) AS number_of_tasks FROM tasks WHERE id_user = '$id_user' AND id_list = '$id_list' AND is_complete = 0;";
+        $date = false;
+
+        switch ( intval($id_list) ){
+            case -2:
+                $date = " DATE(deadline) = DATE(NOW()) ";
+                break;
+            case -3:
+                $date = " DATEDIFF(deadline, CURDATE()) = 1 ";
+                break;
+        }
+
+        if  ($date) {
+            $query = "SELECT COUNT(ID) AS number_of_tasks FROM tasks WHERE id_user = '$id_user' AND is_complete = 0 AND " . $date . " ;";
+        }
+        else {
+            $query = "SELECT COUNT(ID) AS number_of_tasks FROM tasks WHERE id_user = '$id_user' AND id_list = '$id_list' AND is_complete = 0;";
+        }
+
+
+
 
         $result = $this->get_data( $query );
 
@@ -79,7 +103,7 @@ class Task extends Crud
             !isset( $data->description ) ||
             !isset( $data->deadline )
         ) {
-            return $this->response( 0, 422, "Something went wrong!" );
+            return $this->response( 0, 422, "We have a problem on the server side. Please contact the admin server." );
         }
 
         if ( !isset( $data->title ) || empty( trim( $data->title ) ) ) {
@@ -113,7 +137,7 @@ class Task extends Crud
                     return $this->response( 0, 500, "Sorry, there was a problem connecting to the server." );
                 }
             } else {
-                return $this->response( 0, 422, $is_valid, " s" );
+                return $this->response( 0, 422, $is_valid );
             }
         }
     }
@@ -121,7 +145,7 @@ class Task extends Crud
     public function delete_task( $data )
     {
         if ( !isset( $data->id_user ) || empty( $data->id_user ) || !isset( $data->id_task ) || empty( $data->id_task ) ) {
-            return $this->response( 0, 422, "Something went wrong!" );
+            return $this->response( 0, 422, "We have a problem on the server side. Please contact the admin server." );
         }
 
         $id_user = $this->escape_string( $data->id_user );
@@ -134,7 +158,7 @@ class Task extends Crud
         if ( $result === TRUE ) {
             return $this->response( 1, 201, "The task was deleted successfully" );
         } else {
-            return $this->response( 0, 500, "Something went wrong" );
+            return $this->response( 0, 500, "Sorry, there was a problem connecting to the server." );
         }
 
     }
@@ -171,7 +195,7 @@ class Task extends Crud
             !isset( $data->description ) ||
             !isset( $data->deadline )
         ) {
-            return $this->response( 0, 422, "Something went wrong!" );
+            return $this->response( 0, 422, "We have a problem on the server side. Please contact the admin server." );
         }
 
         if ( !isset( $data->title ) || empty( trim( $data->title ) ) ) {
@@ -200,7 +224,7 @@ class Task extends Crud
                 $result = $this->execute( $query );
 
                 if ( $result ) {
-                    return $this->response( 1, 201, "The task '$title' '$id_list '   '$query'    was edited successfully!" );
+                    return $this->response( 1, 201, "The task '$title' was edited successfully!" );
                 } else {
                     return $this->response( 0, 500, "Sorry, there was a problem connecting to the server." );
                 }
@@ -218,7 +242,7 @@ class Task extends Crud
             empty( $data->id_task ) ||
             !isset( $data->is_complete )
         ) {
-            return $this->response( 0, 422, "Something went wrong! " );
+            return $this->response( 0, 422, "We have a problem on the server side. Please contact the admin server." );
         }
 
 
@@ -234,7 +258,7 @@ class Task extends Crud
 
         if ( $result ) {
             if ( $is_complete == 1 )
-                return $this->response( 1, 201, "Task completed successfully! Congratulation" );
+                return $this->response( 1, 201, "Task completed successfully! Congratulation!!!" );
             else
                 return $this->response( 1, 201, "Task uncompleted successfully!" );
 

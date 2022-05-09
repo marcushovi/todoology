@@ -14,7 +14,7 @@ $routes = [
     ]
 ];
 
-$routes_with_second_segment = [  ];
+$routes_with_second_segment = [ "login.php", "lists_get.php" ];
 
 $page = segment( 1 );
 $method = $_SERVER[ 'REQUEST_METHOD' ];

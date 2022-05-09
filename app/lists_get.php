@@ -21,9 +21,9 @@ if ( $lists ) {
 
     foreach ( $lists as &$list ) {
 
+        $list[ "count" ] = $list[ "ID" ] < -1 ? "": "list-task-number";
 
-
-        $lists_html .= '<li id="list-' . $list[ "ID" ] . '" class="list" >
+        $lists_html .= '<li id="list-' . $list[ "ID" ] . '" class="list " >
                         <input type="hidden" name="id_list" value="' . $list[ "ID" ] . '">
                         <button onclick="window.reload_list(' . $list[ "ID" ] . ').then( r => {
 //                        window.reloadJS();
@@ -31,8 +31,8 @@ if ( $lists ) {
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="text-' . substr($list[ "color" ], 3) . '" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z"/>
                         </svg>
-                        <span class="flex-1 ml-3 whitespace-nowrap" id="list-title">' . $list[ "title" ] . '</span>
-                            <span class="list-task-number inline-flex justify-center items-center px-3 p-3 h-7 w-7 text-lg font-bold text-gray-800 ' . $list[ "color" ] . ' rounded-full">' . $list[ "number_of_tasks" ] . '</span>
+                        <span class="flex-1 ml-3 whitespace-nowrap max-w-xs overflow-hidden" id="list-title">' . $list[ "title" ] . '</span>
+                            <span class="' . $list[ "count" ] . ' inline-flex justify-center items-center px-3 p-3 h-7 w-7 text-lg font-bold text-gray-800 ' . $list[ "color" ] . ' rounded-full">' . $list[ "number_of_tasks" ] . '</span>
                     </li>';
     }
 
