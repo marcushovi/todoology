@@ -8,4 +8,6 @@ session_destroy();
 
 redirect( "" );
 
+die();
+
 ?>

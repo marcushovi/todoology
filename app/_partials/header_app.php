@@ -6,133 +6,119 @@
     <meta name="description" content="To do list">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Alata|Open+Sans&display=swap" rel="stylesheet">
-<!--    <link rel="stylesheet" type="text/css" href="--><?//= asset( '/css/style.css' ) ?><!--">-->
+    <!--    <link rel="stylesheet" type="text/css" href="--><? //= asset( '/css/style.css' ) ?><!--">-->
     <link rel="icon" href="<?= asset( '/img/logo-classic.svg' ) ?>">
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css"/>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title>Todo App</title>
+    <title>Todoology</title>
 </head>
-<body>
-    <div class="min-h-full">
-        <nav class="bg-gray-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center h-16">
-                    <div class="flex items-center w-full">
-                        <div class="flex-shrink-0 basis-[8%]">
-                            <a href="<?= BASE_URL ?>" target="_self">
-                                <img class="h-12 w-12" src="<?= asset( '/img/logo-classic.svg' ) ?>"
-                                     alt="Logo">
+<body class="bg-gray-800">
+<div class="min-h-full">
+    <nav>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center h-24">
+                <div class="flex items-center w-full">
+                    <div class="flex-shrink-0 basis-[20%]">
+                        <a href="<?= BASE_URL ?>" target="_self">
+                            <img src="<?= asset( '/img/logo-full.svg' ) ?>"
+                                 alt="Logo">
+                        </a>
+                    </div>
+                    <div class="hidden md:block basis-[50%] mr-4">
+                        <div class="flex items-baseline justify-end space-x-4">
+                            <a href="#"
+                                 class="text-gray-200 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                Profile
                             </a>
-                        </div>
-                        <div class="hidden md:block basis-[8%]">
-                            <div class="flex items-baseline space-x-4">
-                                <div id="sign_out"
-                                     class="text-gray-200 hover:bg-red-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                    Sign out
-                                </div>
 
+                        </div>
+
+                    </div>
+                    <div class="hidden md:block basis-[10%]" >
+                        <div class="flex items-baseline space-x-4" >
+                            <div onclick="window.sign_out()"
+                                 class="text-gray-200 hover:bg-red-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="inline-block text-white-500" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
+                                    <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                                </svg>
+                                Sign out
                             </div>
 
                         </div>
-                        <div class="basis-[84%]">
-                            <div class="hidden md:block">
-                                <div class="flex flex-row-reverse items-center px-5">
-                                    <svg class="ml-6" width="36" height="36" viewBox="0 0 150 150" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0)">
-                                            <path d="M108.506 34.6154C108.506 52.8915 93.5491 67.7308 75.0699 67.7308C56.5907 67.7308 41.634 52.8915 41.634 34.6154C41.634 16.3393 56.5907 1.5 75.0699 1.5C93.5491 1.5 108.506 16.3393 108.506 34.6154Z"
-                                                  fill="white" fill-opacity="0.5" stroke="white" stroke-width="6"/>
-                                            <mask id="path-4-inside-1" fill="white">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                      d="M3.29903 116.026C-1.56047 110.056 -2.3872 101.752 1.32675 95.01C5.1309 88.1039 9.8839 81.794 15.4101 76.2558C21.4701 70.1827 30.6748 69.4715 38.9247 71.8266C50.2371 75.0559 62.1822 76.785 74.5312 76.785C86.8803 76.785 98.8254 75.0559 110.138 71.8266C118.388 69.4715 127.592 70.1827 133.652 76.2558C139.271 81.8864 144.09 88.3148 147.925 95.3563C151.607 102.116 150.741 110.415 145.854 116.362C128.974 136.9 103.374 150 74.7139 150C45.898 150 20.1751 136.757 3.29903 116.026Z"/>
-                                            </mask>
-                                            <path fill-rule="evenodd" clip-rule="evenodd" stroke="white"
-                                                  stroke-width="4"
-                                                  d="M3.29903 116.026C-1.56047 110.056 -2.3872 101.752 1.32675 95.01C5.1309 88.1039 9.8839 81.794 15.4101 76.2558C21.4701 70.1827 30.6748 69.4715 38.9247 71.8266C50.2371 75.0559 62.1822 76.785 74.5312 76.785C86.8803 76.785 98.8254 75.0559 110.138 71.8266C118.388 69.4715 127.592 70.1827 133.652 76.2558C139.271 81.8864 144.09 88.3148 147.925 95.3563C151.607 102.116 150.741 110.415 145.854 116.362C128.974 136.9 103.374 150 74.7139 150C45.898 150 20.1751 136.757 3.29903 116.026Z"
-                                                  fill="white" fill-opacity="0.5"/>
-                                            <path d="M147.925 95.3563L145.291 96.7913L147.925 95.3563ZM145.854 116.362L143.536 114.457L145.854 116.362ZM110.138 71.8266L109.314 68.9418L110.138 71.8266ZM133.652 76.2558L131.529 78.3748L133.652 76.2558ZM1.32675 95.01L-1.30097 93.5626L1.32675 95.01ZM13.2865 74.1368C7.56324 79.8724 2.64002 86.4081 -1.30097 93.5626L3.95446 96.4575C7.62178 89.7998 12.2046 83.7155 17.5337 78.3748L13.2865 74.1368ZM74.5312 73.785C62.4635 73.785 50.7954 72.0955 39.7482 68.9418L38.1012 74.7114C49.6787 78.0164 61.9009 79.785 74.5312 79.785V73.785ZM109.314 68.9418C98.2671 72.0954 86.599 73.785 74.5312 73.785V79.785C87.1615 79.785 99.3838 78.0164 110.961 74.7113L109.314 68.9418ZM150.56 93.9213C146.587 86.6264 141.595 79.9681 135.776 74.1368L131.529 78.3748C136.947 83.8047 141.593 90.0031 145.291 96.7913L150.56 93.9213ZM143.536 114.457C127.202 134.332 102.439 147 74.7139 147V153C104.309 153 130.746 139.469 148.172 118.266L143.536 114.457ZM74.7139 147C46.8384 147 21.9564 134.194 5.62564 114.132L0.972429 117.92C18.3937 139.321 44.9575 153 74.7139 153V147ZM145.291 96.7913C148.376 102.455 147.663 109.435 143.536 114.457L148.172 118.266C153.819 111.395 154.839 101.777 150.56 93.9213L145.291 96.7913ZM110.961 74.7113C118.638 72.52 126.534 73.3693 131.529 78.3748L135.776 74.1368C128.651 66.996 118.138 66.423 109.314 68.9418L110.961 74.7113ZM-1.30097 93.5626C-5.61721 101.398 -4.64281 111.021 0.972429 117.92L5.62564 114.132C1.52188 109.09 0.842803 102.106 3.95446 96.4575L-1.30097 93.5626ZM17.5337 78.3748C22.5284 73.3694 30.4248 72.52 38.1012 74.7114L39.7482 68.9418C30.9248 66.4231 20.4118 66.996 13.2865 74.1368L17.5337 78.3748Z"
-                                                  fill="white" stroke="white" stroke-width="4"
-                                                  mask="url(#path-4-inside-1)"/>
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0">
-                                                <rect width="150" height="150" fill="white"/>
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <div class="ml-3 text-right">
-                                        <div class="text-base font-medium leading-none text-white mb-1"><?= $_SESSION[ "name" ] ?></div>
-                                        <div class="text-sm font-medium leading-none text-gray-200"><?= $_SESSION[ "email" ] ?></div>
-                                        <input type="hidden" name="id_user" value="<?= $_SESSION[ "ID" ] ?>">
-                                    </div>
+
+                    </div>
+                    <div class="basis-[20%]">
+                        <div class="hidden md:block">
+                            <div class="flex flex-row-reverse items-center px-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="text-gray-200" viewBox="0 0 16 16">
+                                    <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                </svg>
+                                <div class="mr-3 text-right">
+                                    <div class="text-base font-medium leading-none text-white mb-1"><?= $_SESSION[ "name" ] ?></div>
+                                    <div class="text-sm font-medium leading-none text-gray-200"><?= $_SESSION[ "email" ] ?></div>
+                                    <input type="hidden" name="id_user" value="<?= $_SESSION[ "ID" ] ?>">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--            Mobile-->
-            <div class="md:hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <div>
-                        <div id="sign_out"
-                             class="mt-6 text-gray-400 hover:bg-red-600 hover:text-white px-3 py-2  rounded-md text-sm font-medium">
-                            Sign out
-                        </div>
-                    </div>
-                </div>
-                <div class="pt-4 pb-3 border-t border-gray-700">
-                    <div class="flex items-center px-5">
-                        <div class="ml-3">
-                            <div class="text-base font-medium leading-none text-white mb-1"><?= $_SESSION[ "name" ] ?></div>
-                            <div class="text-sm font-medium leading-none text-gray-200"><?= $_SESSION[ "email" ] ?></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-
-        <header class="bg-white shadow ">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold text-gray-600">
-                    Remaining Tasks: <span id="number-of-tasks"
-                                           class="inline-block text-center text-3xl font-bold text-white bg-gray-700 leading-[2.5rem] rounded-md shadow-md w-10 h-10 ml-4">0</span>
-                </h1>
+        </div>
+        <!--            Mobile-->
+        <div class="md:hidden">
+            <div class="px-2 pt-2 space-y-1 sm:px-3">
                 <div>
-                    <button id="add_task"
-                            class="p-3 text-lg font-medium weight-md font-bold text-gray-700 transition duration-200 bg-white ring-gray-700 ring-4 rounded-lg hover:bg-gray-700 hover:text-white ease">
-
-                        <!--                    <svg class="inline-block mb-1 mr-2" width="24" height="24" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-                        <!--                        <rect x="1.53408" y="63.8963" width="146.964" height="21.994" rx="10.997"-->
-                        <!--                              transform="rotate(0.0831261 1.53408 63.8963)" fill="white" fill-opacity="0.5"/>-->
-                        <!--                        <rect x="1.53408" y="63.8963" width="146.964" height="21.994" rx="10.997"-->
-                        <!--                              transform="rotate(0.0831261 1.53408 63.8963)" stroke="white" stroke-width="6"/>-->
-                        <!--                        <rect x="63.8965" y="148.466" width="146.964" height="21.994" rx="10.997"-->
-                        <!--                              transform="rotate(-89.9169 63.8965 148.466)" fill="white" fill-opacity="0.5"/>-->
-                        <!--                        <rect x="63.8965" y="148.466" width="146.964" height="21.994" rx="10.997"-->
-                        <!--                              transform="rotate(-89.9169 63.8965 148.466)" stroke="white" stroke-width="6"/>-->
-                        <!--                    </svg>-->
-                        New Task
-                    </button>
-                    <buttton id="add_list"
-                             class="ml-6 p-3 text-lg font-medium weight-md font-bold text-gray-700 transition duration-200 bg-white ring-gray-700 ring-4 rounded-lg hover:bg-gray-700 hover:text-white ease">
-                        <!--                    <svg class="inline-block mb-1 mr-2" width="24" height="24" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-                        <!--                        <rect x="1.53408" y="63.8963" width="146.964" height="21.994" rx="10.997"-->
-                        <!--                              transform="rotate(0.0831261 1.53408 63.8963)" fill="white" fill-opacity="0.5"/>-->
-                        <!--                        <rect x="1.53408" y="63.8963" width="146.964" height="21.994" rx="10.997"-->
-                        <!--                              transform="rotate(0.0831261 1.53408 63.8963)" stroke="white" stroke-width="6"/>-->
-                        <!--                        <rect x="63.8965" y="148.466" width="146.964" height="21.994" rx="10.997"-->
-                        <!--                              transform="rotate(-89.9169 63.8965 148.466)" fill="white" fill-opacity="0.5"/>-->
-                        <!--                        <rect x="63.8965" y="148.466" width="146.964" height="21.994" rx="10.997"-->
-                        <!--                              transform="rotate(-89.9169 63.8965 148.466)" stroke="white" stroke-width="6"/>-->
-                        <!--                    </svg>-->
-                        New List
-                    </buttton>
+                    <div onclick="window.sign_out()"
+                         class="mt-6 text-gray-400 hover:bg-red-600 hover:text-white px-3 py-2  rounded-md text-sm font-medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-red-500" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
+                            <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                        </svg>
+                        Sign out
+                    </div>
+                    <div
+                            class="mt-6 text-gray-200 hover:bg-gray-600 hover:text-white px-3 py-2  rounded-md text-sm font-medium">
+                        Profile
+                    </div>
                 </div>
             </div>
 
-        </header>
+            <div class="pt-4 pb-3 border-t border-gray-700">
+                <div class="flex items-center px-5">
+                    <div class="ml-3">
+                        <div class="text-base font-medium leading-none text-white mb-1"><?= $_SESSION[ "name" ] ?></div>
+                        <div class="text-sm font-medium leading-none text-gray-200"><?= $_SESSION[ "email" ] ?></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <button onclick="window.task_add()" type="button"
+            class="z-50 p-0.5 fixed bottom-96 right-44 flex items-center justify-center  overflow-hidden text-sm font-medium text-gray-900 rounded-xl group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+        <span class="rounded-xl w-full p-3 text-lg text-center font-bold weight-md transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0" id="list-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+        </span>
+    </button>
+
+
+    <header class="bg-gradient-to-br from-purple-600 to-blue-500 shadow ">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold text-center text-gray-100">
+                Remaining Tasks <span id="number-of-tasks"
+                                       class="inline-block text-center text-3xl font-bold text-white bg-gray-800 leading-[2.5rem] rounded-md shadow-md w-10 h-10 ml-4">0</span>
+            </h1>
+            <div>
+
+
+            </div>
+        </div>
+
+    </header>
 

@@ -1,6 +1,6 @@
 <?php
 
-// import connection to server, classes, and start SESSION 
+// import connection to server, classes, and start SESSION
 require_once "_utilities/_config.php";
 /** @var Alert $alert */
 /** @var Validation $validation */
@@ -131,7 +131,7 @@ if ( isset( $_POST[ "email" ] ) && isset( $_POST[ "password" ] ) ) {
                                         </span>
                                 </button>
                                 <p class="text-lg text-gray-300 m-3 ">or, if you don't have an account you can <a
-                                            href="<?= asset( "register", BASE_URL ) ?>" class="text-blue-600 underline">sign
+                                        href="<?= asset( "register", BASE_URL ) ?>" class="text-blue-600 underline">sign
                                         up</a></p>
                             </div>
 
@@ -143,9 +143,6 @@ if ( isset( $_POST[ "email" ] ) && isset( $_POST[ "password" ] ) ) {
 
     </section>
 
-    <!-- change title -->
-    <script>
-        $( "title" ).text( "Todoology Sign Up" );
-    </script>
+
     <!-- import footer -->
 <?php include_once "_partials/footer.php" ?>

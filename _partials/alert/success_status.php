@@ -1,5 +1,6 @@
 <?php
-return '<div class="status-container fixed bottom-0 w-full z-50">
+return '<div class="fixed bottom-0 w-full z-50">
+    <script>window.status_delete()</script>
     <div class="bg-green-600 status w-full transition-transform">
         <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between flex-wrap">

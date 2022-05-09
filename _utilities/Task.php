@@ -40,7 +40,7 @@ class Task extends Crud
         $id_list = $this->escape_string( $id_list );
         // get all complete tasks sorted by time when were uploaded ,also check user ID
 
-        $query = "SELECT COUNT(ID) AS number_of_tasks FROM tasks WHERE id_user = '$id_user' AND id_list = '$id_list';";
+        $query = "SELECT COUNT(ID) AS number_of_tasks FROM tasks WHERE id_user = '$id_user' AND id_list = '$id_list' AND is_complete = 0;";
 
         $result = $this->get_data( $query );
 
@@ -127,7 +127,6 @@ class Task extends Crud
         $id_user = $this->escape_string( $data->id_user );
         $id_task = $this->escape_string( $data->id_task );
 
-
         $query = "DELETE FROM tasks WHERE id_user = '$id_user' AND ID = '$id_task' ;";
 
         $result = $this->execute( $query );
@@ -197,11 +196,11 @@ class Task extends Crud
             $is_valid = $validation->validate_task( $title, $description, $priority );
 
             if ( $is_valid === TRUE ) {
-                $query = "UPDATE tasks SET id_list = '$id_list', title = '$title', description = '$description', deadline = '$deadline', priority = '$priority', updated_at = NOW() WHERE ID =  '$id_task'AND id_list =  '$id_list' AND id_user = '$id_user';";
+                $query = "UPDATE tasks SET id_list = '$id_list', title = '$title', description = '$description', deadline = '$deadline', priority = '$priority', updated_at = NOW() WHERE ID =  '$id_task' AND id_user = '$id_user';";
                 $result = $this->execute( $query );
 
                 if ( $result ) {
-                    return $this->response( 1, 201, "The task '$title' was edited successfully!" );
+                    return $this->response( 1, 201, "The task '$title' '$id_list '   '$query'    was edited successfully!" );
                 } else {
                     return $this->response( 0, 500, "Sorry, there was a problem connecting to the server." );
                 }

@@ -78,11 +78,14 @@ if ( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "
 
             // alert status
             if ( $result ) {
-                $alert->success( "you have been successfully registered " );
+                $alert->success( "You have been successfully registered" );
                 $email = "";
                 $name = "";
                 $password = "";
                 $conPassword = "";
+
+                header('Location: ./log_in.php');
+                die();
             } else {
                 $alert->error( "Sorry, there was a problem connecting to the server." );
             }
@@ -98,76 +101,99 @@ if ( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "
         }
         if ( $error[ 'name' ] )
             $alert->error( $error[ 'name' ] );
-        if ( $error[ 'email' ] )
+        else if ( $error[ 'email' ] )
             $alert->error( $error[ 'email' ] );
-        if ( $error[ 'password' ] )
+        else if ( $error[ 'password' ] )
             $alert->error( $error[ 'password' ] );
     }
 }
 ?>
-    <section class="w-full bg-white">
-        <div class="mx-auto max-w-xl">
-            <div class="w-full bg-white m-auto">
-                <div class="flex flex-col items-center justify-center w-full p-10 lg:p-16 xl:p-24">
-                    <h4 class="w-full text-3xl font-bold">Register</h4>
 
-                    <form method="POST" action="register.php" class="relative w-full mt-10 space-y-8">
-                        <div class="relative">
-                            <label class="font-medium text-gray-900" for="name">Name</label>
-                            <input type="text" name="name" value="<?= $name ?>"
-                                   class=" block w-full px-4 py-4 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50"
-                                   placeholder="Enter Your Name">
-                        </div>
-                        <div class="relative">
-                            <label class="font-medium text-gray-900" for="email">Email</label>
-                            <input type="text" name="email" value="<?= $email ?>"
-                                   class="block w-full px-4 py-4 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50"
-                                   placeholder="Enter Your Email Address">
-                        </div>
-                        <div class="relative">
-                            <label class="font-medium text-gray-900"
-                                   for="password">Password</label>
-                            <input type="password" name="password"
-                                   value="<?= $password ?>"
-                                   class="block w-full px-4 py-4 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50"
-                                   placeholder="Password">
-                            <span id="show-pass"
-                                  class="float-right text-sm font-medium text-blue-900 mt-1 hover:underline">Show password</span>
+    <section class="w-full bg-gray-800">
+
+        <div class="max-w-7xl">
+            <div class="flex flex-col h-screen w-screen lg:flex-row ">
+                <div class="relative w-full bg-cover flex-wrap grow shrink lg:w-6/12 xl:w-7/12 bg-gradient-to-r from-violet-600  to-blue-500">
+                    <div class="relative flex flex-col items-center justify-center w-full h-full px-10 my-20 lg:px-16 lg:my-0">
+                        <div class="flex flex-col items-start space-y-8 tracking-tight mb-16 lg:max-w-3xl">
+                            <div class="relative">
+                                <p class="mb-2 font-bolder text-gray-300 uppercase xl:text-2xl">IT'S FREE</p>
+                                <h2 class="text-5xl font-bold text-gray-50 xl:text-8xl">Schedule your first task</h2>
+                            </div>
+                            <p class="text-xl text-gray-300">Your journey begin here and now!</p>
 
                         </div>
-                        <div class="relative">
-                            <label class="font-medium text-gray-900" for="conPassword">Password
-                                again</label>
-                            <input type="password" name="conPassword"
-                                   value="<?= $conPassword ?>"
-                                   class="block w-full px-4 py-4 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50"
-                                   placeholder="Confirm Password">
-                        </div>
-                        <div class="relative">
-                            <div class="g-recaptcha" data-sitekey="6LfpNwEVAAAAACEtPzLt2UwCtwhNw4cjW4xjCnK7"></div>
-                        </div>
-                        <div class="relative">
-                            <button type="submit"
-                                    class="inline-block w-full px-5 py-4 text-lg font-medium text-center text-white transition duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 ease">
-                                Register
-                            </button>
-                            <p class="text-lg text-gray-500 m-3 ">or, if you have an account you can
-                                <a href="<?= asset( "/", BASE_URL ) ?>" class="text-blue-600 underline">Log in</a>
-                            </p>
+                    </div>
+                </div>
+                <div class="w-full bg-gray-800 flex-wrap grow lg:w-6/12 xl:w-5/12">
+                    <div class="flex flex-col items-center justify-center w-full h-full p-10 lg:p-16 xl:p-24">
+                        <div class="w-full flex justify-center">
+                            <a href="<?= BASE_URL ?>" target="_self">
+                                <img src="<?= asset( '/img/logo-full.svg' ) ?>"
+                                     alt="Logo">
+                            </a>
                         </div>
 
-                    </form>
+                        <form method="POST" action="register.php" class="relative w-xl mt-10 space-y-8">
+                            <div class="relative">
+                                <label class="font-bold text-lg tracking-wide text-gray-100" for="name">Name</label>
+                                <input type="text" name="name" value="<?= $name ?>"
+                                       class="border-0 block w-full px-4 py-4 mt-2 text-xl text-gray-600 placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50"
+                                       placeholder="Enter Your Name">
+                            </div>
+                            <div class="relative">
+                                <label class="font-bold text-lg tracking-wide text-gray-100" for="email">Email</label>
+                                <input type="text" name="email" value="<?= $email ?>"
+                                       class="border-0 block w-full px-4 py-4 mt-2 text-xl text-gray-600 placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50"
+                                       placeholder="Enter Your Email Address">
+                            </div>
+                            <div class="relative">
+                                <label class="font-bold text-lg tracking-wide text-gray-100"
+                                       for="password">Password</label>
+                                <input type="password" name="password"
+                                       value="<?= $password ?>"
+                                       class="border-0 block w-full px-4 py-4 mt-2 text-xl text-gray-600 placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50"
+                                       placeholder="Password">
+                                <span id="show-pass"
+                                      class="float-right text-sm font-medium text-blue-600 mt-1 cursor-pointer hover:underline">Show password</span>
+
+                            </div>
+                            <div class="relative">
+                                <label class="font-bold text-lg tracking-wide text-gray-100" for="conPassword">Password
+                                    again</label>
+                                <input type="password" name="conPassword"
+                                       value="<?= $conPassword ?>"
+                                       class="border-0 block w-full px-4 py-4 mt-2 text-xl text-gray-600 placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50"
+                                       placeholder="Confirm Password">
+                            </div>
+                            <div class="relative flex justify-center">
+                                <div class="g-recaptcha" data-sitekey="6LfpNwEVAAAAACEtPzLt2UwCtwhNw4cjW4xjCnK7"></div>
+                            </div>
+                            <div class="relative">
+                                <button type="submit"
+                                        class="relative inline-flex items-center justify-center overflow-hidden w-full p-0.5 text-xl font-bold tracking-wide rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                                        <span class="relative w-full px-5 py-4 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                            Sign in
+                                        </span>
+                                </button>
+                                <p class="text-lg text-gray-500 m-3 ">or, if you have an account you can
+                                    <a href="<?= asset( "/", BASE_URL ) ?>" class="text-blue-600 underline">Log in</a>
+                                </p>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
 
     </section>
 
 
+
     <!-- change title -->
     <script>
-        $( "title" ).text( "Todo Sign Up" );
+        $( "title" ).text( "Todoology Sign Up" );
     </script>
     <!-- import footer -->
 <?php include_once "_partials/footer.php"; ?>

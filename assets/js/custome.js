@@ -1,14 +1,8 @@
 $( document ).ready( function () {
 
-    // redirect to the main page after registration
-    $( "#ok" ).click( function () {
-        window.location.replace( "log_in.php" );
-
-        $( "#ok" ).remove();
-    } );
 
     // icon to show password in inputs
-    var showPass = $( "#show-pass" );
+    let showPass = $( "#show-pass" );
 
     showPass.mousedown( function () {
 

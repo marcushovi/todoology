@@ -9,7 +9,7 @@ RewriteEngine On
 #Options -Indexes
 
 # Installation directory
-#RewriteBase /www/polovnictvorybarstvo/
+#RewriteBase /todo/
 
 # Protect appication and system files from being viewed
 RewriteRule ^(_utilities) - [F,L]

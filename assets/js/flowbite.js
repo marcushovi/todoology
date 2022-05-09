@@ -2802,7 +2802,6 @@
     }();
 
     window.Dropdown = Dropdown;
-    document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('[data-dropdown-toggle]').forEach(function (triggerEl) {
             var targetEl = document.getElementById(triggerEl.getAttribute('data-dropdown-toggle'));
             var placement = triggerEl.getAttribute('data-dropdown-placement');
@@ -2810,7 +2809,6 @@
                 placement: placement ? placement : dropdown_Default.placement
             });
         });
-    });
     /* harmony default export */ const dropdown = (Dropdown);
     ;// CONCATENATED MODULE: ./src/components/modal.js
     function modal_toConsumableArray(arr) { return modal_arrayWithoutHoles(arr) || modal_iterableToArray(arr) || modal_unsupportedIterableToArray(arr) || modal_nonIterableSpread(); }
