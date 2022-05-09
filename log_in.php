@@ -37,7 +37,7 @@ if ( isset( $_POST[ "email" ] ) && isset( $_POST[ "password" ] ) ) {
 
 
         $hashed_pass = hash( "sha256", $password );
-        $query = "SELECT ID, name, email, password FROM user WHERE email = '$email' AND password = '$hashed_pass'";
+        $query = "SELECT ID, name, email, password FROM users WHERE email = '$email' AND password = '$hashed_pass'";
         $result = $crud->get_data( $query );
 
         // check if user exists with this mail

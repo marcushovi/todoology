@@ -71,13 +71,11 @@ class Task extends Crud
 
     public function create_task( $data )
     {
-        if ( !isset( $data->id_user ) ||
-            empty( $data->id_user ) ||
-            !isset( $data->id_list ) ||
+        if ( empty( $data->id_user ) ||
             empty( $data->id_list ) ||
-            !isset( $data->priority ) ||
-            !isset( $data->description ) ||
-            !isset( $data->deadline )
+            empty( $data->priority ) ||
+            empty( $data->description ) ||
+            empty( $data->deadline )
         ) {
             return $this->response( 0, 422, "Something went wrong!" );
         }
@@ -120,7 +118,7 @@ class Task extends Crud
 
     public function delete_task( $data )
     {
-        if ( !isset( $data->id_user ) || empty( $data->id_user ) || !isset( $data->id_task ) || empty( $data->id_task ) ) {
+        if ( empty( $data->id_user ) || empty( $data->id_task ) ) {
             return $this->response( 0, 422, "Something went wrong!" );
         }
 
@@ -141,7 +139,7 @@ class Task extends Crud
 
     public function delete_tasks( $id_list )
     {
-        if ( !isset( $id_list ) || empty( $id_list ) ) {
+        if ( empty( $id_list ) ) {
             return false;
         }
 
@@ -161,15 +159,12 @@ class Task extends Crud
 
     public function edit_task( $data )
     {
-        if ( !isset( $data->id_user ) ||
-            empty( $data->id_user ) ||
-            !isset( $data->id_list ) ||
+        if ( empty( $data->id_user ) ||
             empty( $data->id_list ) ||
-            !isset( $data->id_task ) ||
             empty( $data->id_task ) ||
-            !isset( $data->priority ) ||
-            !isset( $data->description ) ||
-            !isset( $data->deadline )
+            empty( $data->priority ) ||
+            empty( $data->description ) ||
+            empty( $data->deadline )
         ) {
             return $this->response( 0, 422, "Something went wrong!" );
         }
@@ -200,7 +195,7 @@ class Task extends Crud
                 $result = $this->execute( $query );
 
                 if ( $result ) {
-                    return $this->response( 1, 201, "The task '$title' '$id_list '   '$query'    was edited successfully!" );
+                    return $this->response( 1, 201, "The task '$title' was edited successfully!" );
                 } else {
                     return $this->response( 0, 500, "Sorry, there was a problem connecting to the server." );
                 }
@@ -212,11 +207,9 @@ class Task extends Crud
 
     public function complete_task( $data )
     {
-        if ( !isset( $data->id_user ) ||
-            empty( $data->id_user ) ||
-            !isset( $data->id_task ) ||
+        if ( empty( $data->id_user ) ||
             empty( $data->id_task ) ||
-            !isset( $data->is_complete )
+            empty( $data->is_complete )
         ) {
             return $this->response( 0, 422, "Something went wrong! " );
         }

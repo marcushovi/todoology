@@ -6,7 +6,7 @@
     <meta name="description" content="To do list">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Alata|Open+Sans&display=swap" rel="stylesheet">
-    <!--    <link rel="stylesheet" type="text/css" href="--><? //= asset( '/css/style.css' ) ?><!--">-->
+    <link rel="stylesheet" href="<?= asset( '/css/style.css' ) ?>">
     <link rel="icon" href="<?= asset( '/img/logo-classic.svg' ) ?>">
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css"/>
     <script src="https://cdn.tailwindcss.com"></script>
