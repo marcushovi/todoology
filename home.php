@@ -100,8 +100,7 @@ include_once "_partials/header.php";
                 <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">TIME</h2>
                 <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-200 sm:text-4xl">A better way
                     to manage time</p>
-                <p class="mt-4 max-w-2xl text-xl text-gray-400 lg:mx-auto">Lorem ipsum dolor sit amet consect
-                    adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.</p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-400 lg:mx-auto">We want to bring you our point of view on time management as it is important in our lives.</p>
             </div>
 
             <div class="mt-10">
@@ -118,9 +117,7 @@ include_once "_partials/header.php";
                             </div>
                             <p class="ml-16 text-lg leading-6 font-medium text-gray-200">Access from anywhere</p>
                         </dt>
-                        <dd class="mt-2 ml-16 text-base text-gray-400">Lorem ipsum, dolor sit amet consectetur
-                            adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
-                            blanditiis ratione.
+                        <dd class="mt-2 ml-16 text-base text-gray-400">Of-course you can manage your time from anywhere on the globe and whenever you feel like.
                         </dd>
                     </div>
 
@@ -136,9 +133,7 @@ include_once "_partials/header.php";
                             </div>
                             <p class="ml-16 text-lg leading-6 font-medium text-gray-200">No hidden fees</p>
                         </dt>
-                        <dd class="mt-2 ml-16 text-base text-gray-400">Lorem ipsum, dolor sit amet consectetur
-                            adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
-                            blanditiis ratione.
+                        <dd class="mt-2 ml-16 text-base text-gray-400">We are totally transparent company, you can rely on us. Both of us live in the world where human rights and duties exists.
                         </dd>
                     </div>
 
@@ -154,9 +149,7 @@ include_once "_partials/header.php";
                             </div>
                             <p class="ml-16 text-lg leading-6 font-medium text-gray-200">Fast Web App</p>
                         </dt>
-                        <dd class="mt-2 ml-16 text-base text-gray-400">Lorem ipsum, dolor sit amet consectetur
-                            adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
-                            blanditiis ratione.
+                        <dd class="mt-2 ml-16 text-base text-gray-400">Our team is focused on user experience. It is important for us to bring you fast, smooth and simple user experience.
                         </dd>
                     </div>
 
@@ -174,9 +167,7 @@ include_once "_partials/header.php";
                                         class="text-base text-red-400 font-semibold tracking-wide "> In development</span>
                             </p>
                         </dt>
-                        <dd class="mt-2 ml-16 text-base text-gray-400">Lorem ipsum, dolor sit amet consectetur
-                            adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
-                            blanditiis ratione.
+                        <dd class="mt-2 ml-16 text-base text-gray-400">Our team is still working on new solutions and features. Today our team consist of over 50 people like programmers, managers etc.
                         </dd>
                     </div>
                 </dl>
@@ -196,13 +187,12 @@ include_once "_partials/header.php";
         <div class="relative max-w-screen-xl mx-auto lg:mb-0 px-4 sm:px-6 lg:px-8">
             <div class="pricing-box max-w-lg mx-auto rounded-lg overflow-hidden lg:max-w-none lg:flex">
                 <div class="px-6 py-8 lg:flex-shrink-1 lg:p-12">
-                    <h3 class="text-2xl leading-8 font-extrabold text-gray-900 sm:text-3xl sm:leading-9 dark:text-white">
+                    <h3 class="text-3xl leading-8 font-extrabold text-gray-900 sm:text-3xl sm:leading-9 dark:text-white">
                         Pricing
                     </h3>
                     <p class="mt-6 text-base leading-6 text-gray-500 dark:text-gray-200">
-                        Start selling online for free with all the features you need to launch your local delivery and
-                        pick-up service, nothing more. We don&#x27;t charge commission or monthly fees, keep all your
-                        margin.
+                        Start scheduling online for free with all the features you need. We don&#x27;t charge commission or monthly fees.
+                        Don&#x27;t miss, start now.
                     </p>
                     <div class="mt-8">
                         <div class="flex items-center">
@@ -259,6 +249,18 @@ include_once "_partials/header.php";
                                     Nice looking UI
                                 </p>
                             </li>
+                            <li class="flex items-start lg:col-span-1">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" width="6" height="6"
+                                         stroke="currentColor" fill="#31C48D" viewBox="0 0 1792 1792">
+                                        <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-sm leading-5 text-gray-700 dark:text-gray-200">
+                                    Other functionalities are on the way
+                                </p>
+                            </li>
                         </ul>
                     </div>
 
@@ -266,15 +268,14 @@ include_once "_partials/header.php";
                 <div class="py-8 px-6 text-center bg-gray-50 dark:bg-gray-700 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12">
                     <div class="mt-4 flex items-center justify-center text-5xl leading-none font-extrabold text-gray-900 dark:text-white">
                 <span>
-                    €5/mon
+                    €0/mon
                 </span>
                     </div>
                     <p class="mt-4 text-sm leading-5">
                 <span class="block font-medium text-gray-500 dark:text-gray-400">
-                    Card payments:
+                    Totally Free
                 </span>
                         <span class=" inline-block font-medium text-gray-500 dark:text-gray-400">
-                    3% per transaction
                 </span>
                     </p>
                     <div class="mt-6">
@@ -303,7 +304,7 @@ include_once "_partials/header.php";
     <footer class="text-center bg-gray-800 text-white">
         <div class="container px-6 pt-6">
             <div class="flex justify-center mb-6">
-                <a href="#!" type="button"
+                <a href="#" type="button"
                    class="rounded-full border-2 border-blue-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
                     <svg aria-hidden="true"
                          focusable="false"
@@ -321,7 +322,7 @@ include_once "_partials/header.php";
                     </svg>
                 </a>
 
-                <a href="#!" type="button"
+                <a href="#" type="button"
                    class="rounded-full border-2 border-violet-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
                     <svg aria-hidden="true"
                          focusable="false"
@@ -339,7 +340,7 @@ include_once "_partials/header.php";
                     </svg>
                 </a>
 
-                <a href="#!" type="button"
+                <a href="#" type="button"
                    class="rounded-full border-2 border-blue-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
                     <svg aria-hidden="true"
                          focusable="false"
@@ -357,7 +358,7 @@ include_once "_partials/header.php";
                     </svg>
                 </a>
 
-                <a href="#!" type="button"
+                <a href="#" type="button"
                    class="rounded-full border-2 border-violet-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
                     <svg aria-hidden="true"
                          focusable="false"
@@ -375,7 +376,7 @@ include_once "_partials/header.php";
                     </svg>
                 </a>
 
-                <a href="#!" type="button"
+                <a href="#" type="button"
                    class="rounded-full border-2 border-blue-600 text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-12 h-12 m-1">
                     <svg aria-hidden="true"
                          focusable="false"

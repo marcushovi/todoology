@@ -92,8 +92,7 @@ if ( isset( $_POST[ "email" ] ) && isset( $_POST[ "password" ] ) ) {
                                 <p class="mb-2 font-bolder text-gray-300 uppercase xl:text-2xl">Save your time</p>
                                 <h2 class="text-5xl font-bold text-gray-50 xl:text-8xl">Schedule your tasks</h2>
                             </div>
-                            <p class="text-xl text-gray-300">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Aspernatur assumenda cum luptas voluptatibus!</p>
+                            <p class="text-xl text-gray-300">Let us help you, so you can become more productive and useful for our society!</p>
 
                         </div>
                     </div>
