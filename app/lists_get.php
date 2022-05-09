@@ -43,6 +43,14 @@ if ( $lists ) {
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="inline-block mr-3" viewBox="0 0 16 16">
                                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                         </svg>Add List</span>
+                </buttton></li>
+                <li class="pt-6 mt-6 ">
+                        <button type="button" onclick="window.task_add()" class="w-full relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                                        
+                                                <span class="flex-1 whitespace-nowrap tracking-wider  w-full p-3 text-lg font-bold weight-md relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0" id="list-title">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="inline-block mr-3" viewBox="0 0 16 16">
+                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                        </svg>Add Task</span>
                 </buttton></li>';
 }
 
