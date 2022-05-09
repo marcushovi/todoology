@@ -15,84 +15,44 @@
 </head>
 <body class="bg-gray-800">
 <div class="min-h-full">
-    <nav>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center h-24">
-                <div class="flex items-center w-full">
-                    <div class="flex-shrink-0 basis-[20%]">
-                        <a href="<?= BASE_URL ?>" target="_self">
-                            <img src="<?= asset( '/img/logo-full.svg' ) ?>"
-                                 alt="Logo">
-                        </a>
-                    </div>
-                    <div class="hidden md:block basis-[50%] mr-4">
-                        <div class="flex items-baseline justify-end space-x-4">
-                            <a href="#"
-                                 class="text-gray-200 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                Profile
-                            </a>
-
-                        </div>
-
-                    </div>
-                    <div class="hidden md:block basis-[10%]" >
-                        <div class="flex items-baseline space-x-4" >
-                            <div onclick="window.sign_out()"
-                                 class="text-gray-200 hover:bg-red-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="inline-block text-white-500" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
-                                    <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-                                </svg>
-                                Sign out
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="basis-[20%]">
-                        <div class="hidden md:block">
-                            <div class="flex flex-row-reverse items-center px-5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="text-gray-200" viewBox="0 0 16 16">
-                                    <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
-                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                                </svg>
-                                <div class="mr-3 text-right">
-                                    <div class="text-base font-medium leading-none text-white mb-1"><?= $_SESSION[ "name" ] ?></div>
-                                    <div class="text-sm font-medium leading-none text-gray-200"><?= $_SESSION[ "email" ] ?></div>
-                                    <input type="hidden" name="id_user" value="<?= $_SESSION[ "ID" ] ?>">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--            Mobile-->
-        <div class="md:hidden">
-            <div class="px-2 pt-2 space-y-1 sm:px-3">
-                <div>
-                    <div onclick="window.sign_out()"
-                         class="mt-6 text-gray-400 hover:bg-red-600 hover:text-white px-3 py-2  rounded-md text-sm font-medium">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-red-500" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
-                            <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+    <nav class="bg-white border-gray-200 max-w-7xl mx-auto px-2 sm:px-4 py-2.5 z-10 rounded dark:bg-gray-800">
+        <div class="container  flex flex-wrap justify-evenly gap-6 items-center">
+            <a href="#" class="flex items-center">
+                <img src="<?= asset( '/img/logo-full.svg' ) ?>" class="mr-3 h-10 sm:h-9" alt="Logo">
+            </a>
+            <div class="flex flex-wrap justify-between">
+                <div class="flex items-baseline mr-4">
+                    <a href="#"
+                       class="text-gray-200 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="inline-block text-gray-200 mr-4" viewBox="0 0 16 16">
+                            <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                         </svg>
-                        Sign out
-                    </div>
-                    <div
-                            class="mt-6 text-gray-200 hover:bg-gray-600 hover:text-white px-3 py-2  rounded-md text-sm font-medium">
                         Profile
-                    </div>
+                    </a>
+
                 </div>
+
+                <div onclick="window.sign_out()"
+                     class="text-gray-200 hover:bg-red-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="inline-block text-white-500 mr-4" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
+                        <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                    </svg>
+                    Sign out
+                </div>
+
             </div>
+            <div class="">
+                <div class="md:block">
+                    <div class="flex flex-row-reverse items-center px-5">
 
-            <div class="pt-4 pb-3 border-t border-gray-700">
-                <div class="flex items-center px-5">
-                    <div class="ml-3">
-                        <div class="text-base font-medium leading-none text-white mb-1"><?= $_SESSION[ "name" ] ?></div>
-                        <div class="text-sm font-medium leading-none text-gray-200"><?= $_SESSION[ "email" ] ?></div>
+                        <div class="mr-3 text-center md:text-right">
+                            <div class="text-base font-medium leading-none text-white mb-1"><?= $_SESSION[ "name" ] ?></div>
+                            <div class="text-sm font-medium leading-none text-gray-200"><?= $_SESSION[ "email" ] ?></div>
+                            <input type="hidden" name="id_user" value="<?= $_SESSION[ "ID" ] ?>">
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
