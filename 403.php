@@ -7,17 +7,13 @@ require_once "_utilities/_config.php";
 include_once "_partials/header.php";
 ?>
 
-    <!--  alert 500 Internal Server Error and link to backward -->
+    <!--  alert 403 Internal Server Error and link to backward -->
     <div class="flex items-center justify-center w-screen h-screen">
         <div class="px-4 lg:py-12">
             <div class="lg:gap-4 lg:flex">
-                <div
-                        class="flex flex-col items-center justify-center md:py-24 lg:py-32"
-                >
+                <div class="mr-8 flex flex-col items-center justify-center md:py-24 lg:py-32">
                     <h1 class="font-bold text-blue-600 text-9xl">403</h1>
-                    <p
-                            class="mb-2 text-2xl font-bold text-center text-gray-800 md:text-3xl"
-                    >
+                    <p class="my-4 text-2xl font-bold text-center text-gray-300 md:text-3xl">
                         <span class="text-red-500">Oops!</span> Forbidden
                     </p>
                     <p class="mb-8 text-center text-gray-500 md:text-lg">
@@ -25,8 +21,9 @@ include_once "_partials/header.php";
                     </p>
                     <a href="<?= asset( "", BASE_URL ) ?>"
                        target="_self"
-                       class="inline-block w-full px-5 py-4 text-lg font-medium text-center text-white transition duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 ease"
-                    >Go home</a>
+                       class="mr-4 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xl px-5 py-2.5 text-center">
+                        Go home
+                    </a>
                 </div>
                 <div class="mt-4">
                     <img

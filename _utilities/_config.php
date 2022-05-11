@@ -8,7 +8,7 @@ error_reporting( -1 );
 
 
 // constants & settings
-const BASE_URL = 'http://localhost/todo/';
+const BASE_URL = 'http://localhost/todoology/';
 define( "APP_PATH", realpath( __DIR__ . '/../' ) );
 
 require_once __DIR__ . "/functions-general.php";

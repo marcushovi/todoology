@@ -27,7 +27,7 @@ window.load_list = function ( id_list = "-2" ) {
     form_data = JSON.stringify( form_data );
 
     $.ajax( {
-        url: "http://localhost/todo/app/list_get.php",
+        url: "http://localhost/todoology/app/list_get.php",
         method: "POST",
         data: form_data,
         contentType: "application/json; charset=UTF-8",
@@ -53,7 +53,7 @@ window.get_list_menu = function () {
     form_data = JSON.stringify( form_data );
 
     $.ajax( {
-        url: "http://localhost/todo/app/lists_get.php",
+        url: "http://localhost/todoology/app/lists_get.php",
         method: "POST",
         data: form_data,
         contentType: "application/json; charset=UTF-8",
@@ -106,7 +106,7 @@ window.sign_out = function () {
     // if you are sure then redirect to sign_out.php file
     $( "#yes_sign_out" ).click( function () {
 
-        window.location.replace( "http://localhost/todo/app/sign_out.php" );
+        window.location.replace( "http://localhost/todoology/app/sign_out.php" );
     } );
 
     // if you are not sure then hide alert

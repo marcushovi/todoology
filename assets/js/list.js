@@ -43,7 +43,7 @@ window.list_add = function ( id_user, id_list ) {
 
         // send them to the server
         $.ajax( {
-            url: "http://localhost/todo/app/list_create.php",
+            url: "http://localhost/todoology/app/list_create.php",
             method: "POST",
             data: form_data,
             contentType: "application/json; charset=UTF-8",
@@ -90,7 +90,7 @@ window.list_edit = function ( id_user, id_list, title, color ) {
 
         // send them to the server
         $.ajax( {
-            url: "http://localhost/todo/app/list_edit.php",
+            url: "http://localhost/todoology/app/list_edit.php",
             method: "PATCH",
             data: form_data,
             contentType: "application/json; charset=UTF-8",
@@ -130,7 +130,7 @@ window.list_delete = function ( id_user, id_list, title ) {
 
         // send them to the server
         $.ajax( {
-            url: "http://localhost/todo/app/list_delete.php",
+            url: "http://localhost/todoology/app/list_delete.php",
             method: "DELETE",
             data: form_data,
             contentType: "application/json; charset=UTF-8",
