@@ -27,7 +27,7 @@ export class Utilities {
         form_data = JSON.stringify( form_data );
 
         $.ajax( {
-            url: "http://localhost/todo/app/list_get.php",
+            url: "http://localhost/todoology/app/list_get.php",
             method: "POST",
             data: form_data,
             contentType: "application/json; charset=UTF-8",
@@ -56,7 +56,7 @@ export class Utilities {
         form_data = JSON.stringify( form_data );
 
         $.ajax( {
-            url: "http://localhost/todo/app/lists_get.php",
+            url: "http://localhost/todoology/app/lists_get.php",
             method: "POST",
             data: form_data,
             contentType: "application/json; charset=UTF-8",

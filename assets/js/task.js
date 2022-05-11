@@ -77,7 +77,7 @@ window.task_add = function () {
         form_data = JSON.stringify( form_data );
 
         $.ajax( {
-            url: "http://localhost/todo/app/task_create.php",
+            url: "http://localhost/todoology/app/task_create.php",
             method: "POST",
             data: form_data,
             contentType: "application/json; charset=UTF-8",
@@ -138,7 +138,7 @@ window.task_edit = function ( id_task, id_user, title_field, desc_field, datetim
 
         // send them to the server
         $.ajax( {
-            url: "http://localhost/todo/app/task_edit.php",
+            url: "http://localhost/todoology/app/task_edit.php",
             method: "PATCH",
             data: form_data,
             contentType: "application/json; charset=UTF-8",
@@ -183,7 +183,7 @@ window.task_delete = function ( id_task, id_user, title ) {
 
         // send them to the server
         $.ajax( {
-            url: "http://localhost/todo/app/task_delete.php",
+            url: "http://localhost/todoology/app/task_delete.php",
             method: "DELETE",
             data: form_data,
             contentType: "application/json; charset=UTF-8",
@@ -232,7 +232,7 @@ window.task_complete = function ( id_task, id_user, is_complete ) {
 
     // send them to the server
     $.ajax( {
-        url: "http://localhost/todo/app/task_complete.php",
+        url: "http://localhost/todoology/app/task_complete.php",
         method: "PATCH",
         data: form_data,
         contentType: "application/json; charset=UTF-8",

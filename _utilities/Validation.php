@@ -69,18 +69,8 @@ class Validation
         if ( strlen( trim( $email ) ) > $this->max_length_of_email ) {
             return "Email must contain no more than $this->max_length_of_email letters";
         }
-//        if ( strlen( trim( $value ) ) < 6 ) {
-//            return "Email must contain at least 6 letters";
-//        }
-//
-//        // must contain @ and .
-//        if ( strpos( $value, "@" ) === false ) {
-//            return "Email must contain '@'";
-//        }
-//        if ( strpos( $value, "." ) === false ) {
-//            return "Email must contain '.'";
-//        }
 
+        // validate email
         if ( !filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
             return "Invalid Email Address!";
         }
