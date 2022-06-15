@@ -15,10 +15,10 @@ class Database_config
             try {
                 $this->connection = new mysqli( $this->_host, $this->_username, $this->_password, $this->_database );
                 if ( !$this->connection ) {
-                    die( include "500.php" );
+                    die( include "../500.php" );
                 }
             } catch ( mysqli_sql_exception $e ) {
-                die( include "500.php" );
+                die( include "../500.php" );
             }
 
         }

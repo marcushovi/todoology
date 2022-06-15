@@ -3,7 +3,7 @@
 function show_404()
 {
     header( 'HTTP/1.0 404 Not Found' );
-    include_once '403.php';
+    include_once '404.php';
     die();
 }
 
