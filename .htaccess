@@ -1,6 +1,6 @@
-ErrorDocument 404 http://localhost/todoology/404.php
-ErrorDocument 403 http://localhost/todoology/403.php
-ErrorDocument 500 http://localhost/todoology/500.php
+ErrorDocument 404 http://localhost/todo/404.php
+ErrorDocument 403 http://localhost/todo/403.php
+ErrorDocument 500 http://localhost/todo/500.php
 
 
 RewriteEngine On
